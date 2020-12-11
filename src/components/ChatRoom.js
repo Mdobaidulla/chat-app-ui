@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Person from './Person'
-class Contact extends Component{
+class ChatRoom extends Component{
    
     render(){
         const allContacts = this.props.contacts.map((contact, index)=>{
@@ -17,4 +17,4 @@ class Contact extends Component{
    ) 
     }
 }
-export default Contact;
+export default ChatRoom;

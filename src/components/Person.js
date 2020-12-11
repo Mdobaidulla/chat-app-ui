@@ -4,7 +4,7 @@ class Person extends Component{
    
     render(){
         return(
-        <div className="left aligned column">
+        <div className="left aligned columnn" onClick={this.clickingOnChatRoom}>
             <div className="ui vertical fluid menu contcat">
                
                     <tr>
@@ -17,6 +17,9 @@ class Person extends Component{
         </div>
        
         )
+    }
+    clickingOnChatRoom(){
+        console.log('my chatroom is working');
     }
 }
 

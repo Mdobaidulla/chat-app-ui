@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios'
-import Contact from './Contact'
-class Contacts extends Component{
+import ChatRoom from './ChatRoom'
+class ChatRooms extends Component{
     state={
         contacts:[]
        }
@@ -30,10 +30,10 @@ class Contacts extends Component{
     render(){
         return(
          <>    
-		 <Contact contacts={this.state.contacts}/>
+		 <ChatRoom contacts={this.state.contacts}/>
          </>
         )
     }
 }
 
-export default Contacts;
+export default ChatRooms;
