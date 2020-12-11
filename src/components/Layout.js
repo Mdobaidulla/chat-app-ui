@@ -2,8 +2,14 @@ import React, {Component} from 'react';
 import ChatRooms from './ChatRooms'
 
 class Layout extends Component{
-    render(){
-        return(
+  constructor(props) {
+    super(props);
+
+  }
+  
+  render(){
+
+      return(
             <>
        
             <div className="left_part">
