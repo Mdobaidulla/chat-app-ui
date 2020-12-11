@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import ChatRooms from './ChatRooms'
 
 class Layout extends Component{
     render(){
@@ -15,6 +16,7 @@ class Layout extends Component{
                 </div>
                 <div className="contract_box">
                   Contact component will be here
+                  <ChatRooms/>
                 </div>
             </div>
             <div className="right_part">

@@ -53,3 +53,11 @@ border-bottom-left-radius: 1.5vh;
   background-color:#FFFFFF;
   border-bottom-right-radius: 1.5vh;
 }
+.imgages{
+ 
+  border-radius: 50%;
+  
+}
+.contcat{
+  padding:5px;
+}
