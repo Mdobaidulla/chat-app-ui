@@ -1,8 +1,17 @@
 import React, {Component} from 'react';
+import ContactList from './ContactList';
+import { getUsers } from '../api';
+import axios from 'axios';
 
 class Layout extends Component{
-    render(){
-        return(
+  constructor(props) {
+    super(props);
+
+  }
+  
+  render(){
+
+      return(
             <>
        
             <div className="left_part">
@@ -14,7 +23,7 @@ class Layout extends Component{
                  Search
                 </div>
                 <div className="contract_box">
-                  Contact component will be here
+                  <ContactList />
                 </div>
             </div>
             <div className="right_part">
