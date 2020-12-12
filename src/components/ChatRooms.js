@@ -3,23 +3,23 @@ import axios from 'axios'
 import ChatRoom from './ChatRoom'
 class ChatRooms extends Component{
     state={
-        contacts:[]
+        contacts:[],
+        chatrooms: []
        }
    
     componentDidMount(){
-        this.getAllContacts();
+        this.getAllChatrooms();
         
     }
-    getAllContacts= async () =>{
+    getAllChatrooms= async () =>{
         try {
-        const allContacts =await axios(
-            'http://localhost:5000/users'
+        const allChatrooms =await axios(
+            `http://localhost:5000/chatrooms/chatroomWithUserId/${this.props.current_user}`
         );
-        console.log('All Value',allContacts.data);
+        console.log('All Chatroom Values', allChatrooms.data);
         await this.setState({
-            contacts:allContacts.data
-            
-        })
+            chatrooms: allChatrooms.data
+        });
 
     } catch (err) {
         console.log(err);
@@ -28,9 +28,16 @@ class ChatRooms extends Component{
     }
 
     render(){
+        const allChatrooms = this.state.chatrooms.map((chatroom, index)=>{
+            console.log("chatroom is " + chatroom.chatroom_id);
+            return(
+                <ChatRoom key={index} chatroom={chatroom} current_user={this.props.current_user}
+                showConversation={this.props.showConversation}/>
+            )
+        })
         return(
          <>    
-		 <ChatRoom contacts={this.state.contacts}/>
+		    {allChatrooms}
          </>
         )
     }
