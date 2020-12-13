@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import Message from './Message';
+import socketIOClient from "socket.io-client";
 
 class Conversation extends Component{
     state={
         chats: [],
         chatroom: '',
+        received_msg: '',
        }
    
     componentDidMount(){
@@ -43,14 +45,21 @@ class Conversation extends Component{
             
         }
 
-        if (this.state.chats[0] != null) {
-            console.log("chats length: " + this.state.chats.length);
-            console.log("first message: " + this.state.chats[0].message);
-        }
+        const socket = socketIOClient('http://localhost:5000');
+        socket.on('text_message', (text_msg) => {
+            console.log("text message", text_msg);
+            if (this.state.received_msg != text_msg) {
+                this.getConversation();
+
+                this.setState({
+                    received_msg: text_msg,
+                })
+            }
+        });
 
         const allMessages = this.state.chats.map((chat, index)=>{
             return(
-                <Message key={index} user={chat.user} message={chat.message}/>
+                <Message key={index} user={chat.user} message={chat.message} timestamp={chat.createdAt}/>
             )
         })
 

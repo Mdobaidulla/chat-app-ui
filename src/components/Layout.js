@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
 import ChatRooms from './ChatRooms';
 import Conversation from './Conversation';
+import ChatBox from './ChatBox';
 
 class Layout extends Component{
   constructor(props) {
     super(props);
     
     this.state = {
-      current_user: '5fd293f5366898c19ea1086d',
+      current_user: '5fd293f5366898c19ea1086d',  //Luke Skywalker
+      // current_user: '5fd29550366898c19ea1086e',  //Han Solo
       chatroom: '',
     }
   }
@@ -47,7 +49,7 @@ class Layout extends Component{
                    <Conversation chatroom={this.state.chatroom}/>
                 </div>
                 <div className="right_footer">
-                   Send text conponent will be here
+                   <ChatBox current_user={this.state.current_user} chatroom={this.state.chatroom}/>
                 </div>
                   
             </div>

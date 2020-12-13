@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import axios from 'axios'
-import ChatRoom from './ChatRoom'
+import axios from 'axios';
+import ChatRoom from './ChatRoom';
+
 class ChatRooms extends Component{
     state={
         contacts:[],
