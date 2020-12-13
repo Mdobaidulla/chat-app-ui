@@ -1,15 +1,27 @@
 import React, {Component} from 'react';
-import ChatRooms from './ChatRooms'
 import Profile from './profile/Profile'
-
-
-
-
+import ChatRooms from './ChatRooms';
+import Conversation from './Conversation';
+import ChatBox from './ChatBox';
 
 class Layout extends Component{
   constructor(props) {
     super(props);
+    
+    this.state = {
+      current_user: '5fd58c2dffb1f422940fe756',  //Luke Skywalker
+      // current_user: '5fd29550366898c19ea1086e',  //Han Solo
+      chatroom: '',
+    }
+  }
 
+  showConversation = (chatroom) => {
+    console.log('the chatroom is working');
+    console.log("show Conversation: " + chatroom);
+    
+    this.setState({
+      chatroom: chatroom,
+    })
   }
   
   render(){
@@ -27,7 +39,7 @@ class Layout extends Component{
                 </div>
                 <div className="contract_box">
                   Contact component will be here
-                  <ChatRooms/>
+                  <ChatRooms current_user={this.state.current_user} showConversation={this.showConversation}/>
                 </div>
             </div>
             <div className="right_part">
@@ -35,10 +47,10 @@ class Layout extends Component{
                   header left
                 </div>
                 <div className="right_main_part">
-                   All the text will go here 
+                   <Conversation chatroom={this.state.chatroom}/>
                 </div>
                 <div className="right_footer">
-                   Send text conponent will be here
+                   <ChatBox current_user={this.state.current_user} chatroom={this.state.chatroom}/>
                 </div>
                   
             </div>

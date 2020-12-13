@@ -30,11 +30,11 @@ setCurrentUser= (currentUser)=>{
        
   </header>
    <main>
-      {/* {'current user: '+this.state.currentUser} */}
+    
       {
-      !this.state.currentUser
-      ?<Landing setCurrentUser={this.setCurrentUser}/>
-      :
+      // !this.state.currentUser
+      // ?<Landing setCurrentUser={this.setCurrentUser}/>
+      // :
       <div className='pages'>
     {this.state.currentUser == null}
       <Layout /> 
