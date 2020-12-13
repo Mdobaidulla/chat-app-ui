@@ -1,9 +1,8 @@
 .pages {
   margin: 0px auto;
   max-width:1140px;
-  min-height: 98.5vh;
+  min-height: 100vh;
   display:flex;
-  justify-content: center;
   border:5px solid #df9109;;
   border-radius:2.5vh;
 }
@@ -11,7 +10,7 @@
     width:30%;
     display:flex;
     flex-direction:column;
-    border-right:3px solid #df9109;;
+   
 }
 .header_left_part{
   background-color: #df9109;
@@ -61,3 +60,60 @@ border-bottom-left-radius: 1.5vh;
 .contcat{
   padding:5px;
 }
+
+
+/* Home Pgae */
+header{
+  background:#f58002;
+  height:10vh;
+}
+.header-container{
+  margin: 0px auto;
+  max-width:1140px;
+  color:#FFFFFF;
+  display:flex;
+}
+.logos{
+  width:10vh;
+  height:10vh;
+}
+.main-header{
+  line-height:10px;
+  padding-left:20px;
+}
+main{
+  /* height:80vh; */
+  background-image: url('../src/images/back.JPG');
+  background-size: cover;
+ 
+}
+footer{
+  background:#000000;
+  height:10vh;
+}
+
+
+/* main_page  start */
+.landing_page{
+  margin:0 auto;
+  max-width:1140px;
+  min-height: 80vh;
+  display:flex;
+  justify-content:space-around;
+  align-items: left;
+  border:2px solid #FFFFFF;
+
+}
+.left_part{
+  padding-top:5vh;
+  width:50vh;
+}
+.right_part{
+  width:50%;
+  padding-top:2vh;
+ }
+ .inof{
+   font-size:18px;
+   color:#0c211b;
+
+ }

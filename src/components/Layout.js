@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Profile from './profile/Profile'
 import ChatRooms from './ChatRooms';
 import Conversation from './Conversation';
 import ChatBox from './ChatBox';
@@ -8,7 +9,7 @@ class Layout extends Component{
     super(props);
     
     this.state = {
-      current_user: '5fd293f5366898c19ea1086d',  //Luke Skywalker
+      current_user: '5fd58c2dffb1f422940fe756',  //Luke Skywalker
       // current_user: '5fd29550366898c19ea1086e',  //Han Solo
       chatroom: '',
     }
@@ -30,7 +31,7 @@ class Layout extends Component{
        
             <div className="left_part">
                 <div className="header_left_part">
-                  Your profile
+                  <Profile />
                 </div>
                 <div className="search_box">
                     {/* this input box will be in seperate component */}

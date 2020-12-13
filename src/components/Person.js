@@ -10,7 +10,6 @@ class Person extends Component{
             chatroomId: this.props.chatroom_id
         });
     }
-
     render(){
         return(
             <div className="left aligned column" onClick={() => this.props.showConversation(this.props.chatroom_id)}>
