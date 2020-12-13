@@ -1,5 +1,10 @@
 import React, {Component} from 'react';
 import ChatRooms from './ChatRooms'
+import Profile from './profile/Profile'
+
+
+
+
 
 class Layout extends Component{
   constructor(props) {
@@ -14,7 +19,7 @@ class Layout extends Component{
        
             <div className="left_part">
                 <div className="header_left_part">
-                  Your profile
+                  <Profile />
                 </div>
                 <div className="search_box">
                     {/* this input box will be in seperate component */}
