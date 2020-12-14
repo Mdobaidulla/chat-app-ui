@@ -74,6 +74,11 @@ footer{
   color:#FFFFFF;
 
 }
+.profile_name{
+   padding:2vh; 
+   font-size:4vh;
+ 
+}
 .chat-main-room{
   display: flex;
   flex-direction:row;

@@ -48,7 +48,7 @@ login = async (e, login) => {
      
     });
     //passing the current user value in the parent component called App.js
-    this.props.setCurrentUser(loggedInUserResponse.data.email);
+    this.props.setCurrentUser(loggedInUserResponse.data);
   } catch (err) {
     console.log('error', err);
   }
