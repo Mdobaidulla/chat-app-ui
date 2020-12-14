@@ -10,7 +10,7 @@ class Layout extends Component{
     super(props);
     
     this.state = {
-      current_user: '5fd58c2dffb1f422940fe756',  //Luke Skywalker
+      current_user: '5fd293f5366898c19ea1086d',  //Luke Skywalker
       // current_user: '5fd29550366898c19ea1086e',  //Han Solo
       chatroom: '',
       chatrooms: [],

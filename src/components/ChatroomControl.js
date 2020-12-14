@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import ChatRoom from './ChatRoom';
 
 class ChatroomControl extends Component{
     state={

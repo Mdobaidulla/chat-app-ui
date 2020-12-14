@@ -8,6 +8,7 @@ class ChatRoom extends Component{
         otherUserId: '',
         otherUserFirstName: '',
         otherUserLastName: '',
+        otherUserEmail: '',
         chatroomId: '',
        }
    
@@ -43,10 +44,15 @@ class ChatRoom extends Component{
             `http://localhost:5000/users/last_name/${otherUserId}`
         );
 
+        const otherUserEmail =await axios(
+            `http://localhost:5000/users/email/${otherUserId}`
+        );
+
         this.setState({
             otherUserId: otherUserId,
             otherUserFirstName: otherUserFirstName.data,
             otherUserLastName: otherUserLastName.data,
+            otherUserEmail: otherUserEmail.data,
             chatroomId: chatroomId,
         });
         
@@ -62,7 +68,7 @@ class ChatRoom extends Component{
             <>
                 <Person first_name={this.state.otherUserFirstName} last_name={this.state.otherUserLastName}
                     chatroom_id={this.state.chatroomId} showConversation={this.props.showConversation}
-                    getAllChatrooms={this.props.getAllChatrooms}
+                    getAllChatrooms={this.props.getAllChatrooms} email={this.state.otherUserEmail}
                 />
             </>
         ) 
