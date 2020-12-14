@@ -1,31 +1,14 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import socketIOClient from "socket.io-client";
+import { Icon } from 'semantic-ui-react';
+
 
 class ChatBox extends Component{
     state={
         textAreaValue: '',
     }
    
-    // componentDidMount(){
-    //     this.getAllChatrooms();
-    // }
-
-    // getAllChatrooms= async () =>{
-    //     try {
-    //     const allChatrooms =await axios(
-    //         `http://localhost:5000/chatrooms/chatroomWithUserId/${this.props.current_user}`
-    //     );
-    //     console.log('All Chatroom Values', allChatrooms.data);
-    //     this.setState({
-    //         chatrooms: allChatrooms.data
-    //     });
-    //     } 
-    //     catch (err) {
-    //         console.log(err);
-    //     }
-      
-    //     }
 
     send = () => {
         console.log("Sending socket.io emit");
@@ -74,18 +57,22 @@ class ChatBox extends Component{
         
         return(
          <>    
-		    <div>
+		    <div className="text-areas">
                 <textarea 
                     type="textarea" 
                     name="input_chat"
                     value={this.state.textAreaValue}
                     onChange={this.handleChange}
-                    rows={5}
-                    cols={50}
+                    rows={3}
+                       
                 />
             </div>
-            <button onClick={this.handleSendClick}>Send</button>
-            <button onClick={this.handleClearClick}>Clear</button>
+            <div className="buttons">
+            <button onClick={this.handleSendClick}>
+            <Icon inverted  name='arrow right' size='big' />
+                </button>
+            {/* <button onClick={this.handleClearClick}>Clear</button> */}
+            </div>
          </>
         )
     }

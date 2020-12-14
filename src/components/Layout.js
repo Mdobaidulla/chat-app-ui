@@ -27,34 +27,24 @@ class Layout extends Component{
   render(){
 
       return(
-            <>
-       
-            <div className="left_part">
-                <div className="header_left_part">
-                  <Profile />
-                </div>
-                <div className="search_box">
-                    {/* this input box will be in seperate component */}
-                 Search
-                </div>
-                <div className="contract_box">
-                  Contact component will be here
-                  <ChatRooms current_user={this.state.current_user} showConversation={this.showConversation}/>
-                </div>
-            </div>
-            <div className="right_part">
-                <div className="header_right_part">
-                  header left
-                </div>
-                <div className="right_main_part">
-                   <Conversation chatroom={this.state.chatroom}/>
-                </div>
-                <div className="right_footer">
-                   <ChatBox current_user={this.state.current_user} chatroom={this.state.chatroom}/>
-                </div>
-                  
-            </div>
-            </>
+            <div className="chat-room">
+              <div className="chat-room-header">
+              Header
+              </div>
+              <div className="chat-main-room">
+                <div className="chat-main-room-left">
+                <ChatRooms current_user={this.state.current_user} showConversation={this.showConversation}/>
+                  </div>
+                  <div className="chat-main-room-right">
+                    <div className="conversation">
+                    <Conversation chatroom={this.state.chatroom}/>
+                    </div>
+                    <div className="chat-main-room-footer">
+                       <ChatBox current_user={this.state.current_user} chatroom={this.state.chatroom}/> 
+                    </div>
+                  </div>
+              </div>
+            </div> 
         )
     }
 }
