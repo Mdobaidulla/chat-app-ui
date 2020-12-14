@@ -70,7 +70,7 @@ footer{
 .chat-room-header{
   height:7vh;
   width:1137px;
-  background-color:#faac04;
+  background-color:#e4a825;
   color:#FFFFFF;
 
 }
@@ -100,11 +100,13 @@ flex-direction:column;
   background-image: url('../src/images/chat-bg.jpg');
   height:64.2vh;
   padding:1vh;
+  overflow-y: scroll;
 }
 .chat-main-room-footer{
   display:flex;
   flex-direction:row;
   margin-bottom:-5px;
+  
 }
 .text-areas{
   width:93%;
@@ -116,11 +118,14 @@ textarea{
   border:none;
   padding:1vh;
   border-bottom:5px solid #dad8d8;
+  border-top:5px solid #dad8d8;
+  outline: none;
 }
 .buttons button{
 background:rgb(230, 206, 206);
 border:none;
 height:94%;
-width:8vh;
+width:12vh;
 border-bottom:5px solid #dad8d8;
+outline: none;
 }
