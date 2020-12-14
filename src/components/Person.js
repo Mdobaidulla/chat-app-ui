@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import axios from 'axios'
 
 class Person extends Component{
     state={
@@ -10,6 +11,18 @@ class Person extends Component{
             chatroomId: this.props.chatroom_id
         });
     }
+
+    deleteChatroom = async () => {
+        console.log("Delete Chatroom: " + this.props.chatroom_id);
+
+        const chat = await axios({
+            method: 'delete',
+            url: `http://localhost:5000/chatrooms/${this.props.chatroom_id}`
+        });
+
+        this.props.getAllChatrooms();
+    }
+
     render(){
         return(
             <div className="left aligned column" onClick={() => this.props.showConversation(this.props.chatroom_id)}>
@@ -20,7 +33,7 @@ class Person extends Component{
                         height="50" width="50" className="images"
                         />{this.props.first_name} {this.props.last_name } {this.props.chatroom_id}
                         </tr>
-                
+                        <button onClick={this.deleteChatroom}>Delete</button>
                 </div>
             </div>
         )

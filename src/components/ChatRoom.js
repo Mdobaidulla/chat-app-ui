@@ -62,6 +62,7 @@ class ChatRoom extends Component{
             <>
                 <Person first_name={this.state.otherUserFirstName} last_name={this.state.otherUserLastName}
                     chatroom_id={this.state.chatroomId} showConversation={this.props.showConversation}
+                    getAllChatrooms={this.props.getAllChatrooms}
                 />
             </>
         ) 

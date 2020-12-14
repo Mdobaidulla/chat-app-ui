@@ -4,6 +4,7 @@ import axios from 'axios';
 class Message extends Component{
     state={
         user:'',
+        id: '',
         first_name: '',
         last_name: '',
         message: '',
@@ -16,19 +17,41 @@ class Message extends Component{
     }
     getName= async () =>{
         try {
-        const first_name =await axios(
+        const first_name = await axios(
             `http://localhost:5000/users/first_name/${this.props.user}`
         );
         console.log('first_name', first_name.data);
 
-        const last_name =await axios(
+        const last_name = await axios(
             `http://localhost:5000/users/last_name/${this.props.user}`
         );
         console.log('last_name', last_name.data);
 
         let date = new Date(this.props.timestamp);
-        let timestamp = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-        timestamp = timestamp + ' ' + '(' + (Number(date.getMonth()) + 1) + '-' + date.getDay() + '-' + date.getFullYear() + ')';
+        let hours = date.getHours();
+        let minutes = date.getMinutes();
+        let seconds = date.getSeconds();
+
+        let ampm;
+        if (hours > 12) {
+            ampm = 'pm';
+        }
+        else {
+            ampm = 'am';
+        }
+
+        hours = hours % 12;
+
+        if (minutes < 10) {
+            minutes = '0' + minutes;
+        }
+
+        if (seconds < 10) {
+            seconds = '0' + seconds;
+        }
+
+        let timestamp = hours + ":" + minutes + ":" + seconds + ' ' + ampm;
+        timestamp = timestamp + ' ' + '(' + (Number(date.getUTCMonth()) + 1) + '-' + date.getDate() + '-' + date.getFullYear() + '):';
         console.log('timestamp is ', timestamp);
         
         this.setState({
@@ -38,15 +61,30 @@ class Message extends Component{
             timestamp: timestamp,
         });
 
-    } catch (err) {
-        console.log(err);
-      }
+        } catch (err) {
+            console.log(err);
+        }
       
     }
 
+    deleteMessage = async () => {
+        console.log("Delete Message: " + this.props.id);
+
+        const chat = await axios({
+            method: 'delete',
+            url: `http://localhost:5000/chats/${this.props.id}`
+        });
+
+        this.props.getConversation();
+    }
+
     render(){
-        if (this.props.user != this.state.user) {
+        if (this.props.id != this.state.id) {
             this.getName();
+
+            this.setState({
+                id: this.props.id,
+            })
         }
         
         let name = '';
@@ -69,7 +107,7 @@ class Message extends Component{
                         <tr>
                             {this.props.message}
                         </tr>
-                
+                        <button onClick={this.deleteMessage}>Delete</button>
                 </div>
             </div>
         )
