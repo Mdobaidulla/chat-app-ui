@@ -98,7 +98,6 @@ class ChatBox extends Component{
             <button onClick={this.handleSendClick}>
             <Icon inverted  name='arrow right' size='big' />
                 </button>
-            {/* <button onClick={this.handleClearClick}>Clear</button> */}
             </div>
          </>
         )

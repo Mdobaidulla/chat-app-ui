@@ -29,13 +29,12 @@ setCurrentUser= (currentUser)=>{
        
   </header>
    <main>
-    
       {!this.state.currentUser
       ?<Landing setCurrentUser={this.setCurrentUser} />
       :
       <div className='chat_page'>
     
-      <Layout currentUser={this.state.currentUser} /> 
+      <Layout currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser} /> 
       </div> 
       }
   </main>
