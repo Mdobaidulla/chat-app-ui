@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-// import { Grid } from 'semantic-ui-react';
 import axios from 'axios'
 import CreateUser from '../createuser/CreateUser';
 import Login from '../login/Login'
@@ -60,7 +59,6 @@ render(){
 
         
     <div className="landing_page">
-       
         <div className="left_part">
         <Login login={this.login}/>
         </div>
