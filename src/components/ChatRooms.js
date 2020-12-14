@@ -5,35 +5,38 @@ import ChatRoom from './ChatRoom';
 class ChatRooms extends Component{
     state={
         contacts:[],
-        chatrooms: []
+        // chatrooms: [],
        }
    
     componentDidMount(){
         this.getAllChatrooms();
         
     }
+
     getAllChatrooms= async () =>{
         try {
         const allChatrooms =await axios(
             `http://localhost:5000/chatrooms/chatroomWithUserId/${this.props.current_user}`
         );
         console.log('All Chatroom Values', allChatrooms.data);
-        await this.setState({
-            chatrooms: allChatrooms.data
-        });
 
-    } catch (err) {
-        console.log(err);
-      }
-      
+        // this.setState({
+        //     chatrooms: allChatrooms.data
+        // });
+
+        this.props.showChatrooms(allChatrooms.data);
+
+        } catch (err) {
+            console.log(err);
+        }
     }
 
     render(){
-        const allChatrooms = this.state.chatrooms.map((chatroom, index)=>{
+        const allChatrooms = this.props.chatrooms.map((chatroom, index)=>{
             console.log("chatroom is " + chatroom.chatroom_id);
             return(
                 <ChatRoom key={index} chatroom={chatroom} current_user={this.props.current_user}
-                showConversation={this.props.showConversation}/>
+                showConversation={this.props.showConversation} getAllChatrooms={this.getAllChatrooms}/>
             )
         })
         return(

@@ -5,6 +5,7 @@ import socketIOClient from "socket.io-client";
 class ChatBox extends Component{
     state={
         textAreaValue: '',
+        socket: null,
     }
    
     // componentDidMount(){
@@ -27,16 +28,35 @@ class ChatBox extends Component{
       
     //     }
 
+    componentDidUnMount(){
+        if (this.state.socket != null) {
+            this.state.socket.disconnect();
+        }
+    }
+
     send = () => {
         console.log("Sending socket.io emit");
+
+        let sendMessage = this.props.chatroom + "|" + this.state.textAreaValue
+
         const socket = socketIOClient('http://localhost:5000');
-        socket.emit('text_message', this.state.textAreaValue) // send out text message
+        socket.emit('text_message', sendMessage) // send out text message
+
+        this.setState({
+            chatroom: this.props.chatroom,
+            socket: socket,
+        });
     }
 
     handleChange = (event) => {
         this.setState({ 
             textAreaValue: event.target.value,
         });
+
+        if(event.keyCode == 13 && event.shiftKey == false) {
+            event.preventDefault();
+            this.handleSendClick();
+          }
     }
 
     handleSendClick = async (event) => {
@@ -66,24 +86,32 @@ class ChatBox extends Component{
         });
     }
 
+    handleUserKeyPress = e => {
+        if (e.key === "Enter" && !e.shiftKey) {
+          // e.preventDefault();
+          this.handleSendClick();
+        }
+    };
+
     render(){
-        const socket = socketIOClient('http://localhost:5000');
-        socket.on('text_message', (text_msg) => {
-            console.log("text message", text_msg);
-        });
+        // const socket = socketIOClient('http://localhost:5000');
+        // socket.on('text_message', (text_msg) => {
+        //     console.log("text message", text_msg);
+        // });
         
         return(
          <>    
-		    <div>
+            <form onSubmit={this.handleSendClick}>
                 <textarea 
                     type="textarea" 
                     name="input_chat"
                     value={this.state.textAreaValue}
                     onChange={this.handleChange}
+                    onKeyPress={this.handleUserKeyPress}
                     rows={5}
                     cols={50}
                 />
-            </div>
+            </form>
             <button onClick={this.handleSendClick}>Send</button>
             <button onClick={this.handleClearClick}>Clear</button>
          </>
