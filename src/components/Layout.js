@@ -10,8 +10,7 @@ class Layout extends Component{
     super(props);
     
     this.state = {
-      current_user: '5fd58c2dffb1f422940fe756',  //Luke Skywalker
-      // current_user: '5fd29550366898c19ea1086e',  //Han Solo
+      current_user: this.props.currentUser._id,
       chatroom: '',
       chatrooms: [],
     }
@@ -40,7 +39,9 @@ class Layout extends Component{
       return(
             <div className="chat-room">
               <div className="chat-room-header">
-              Header
+               <div className="profile_name"> 
+              {this.props.currentUser.first_name}  {this.props.currentUser.last_name}
+              </div>
               </div>
               <div className="chat-main-room">
                 <div className="chat-main-room-left">
