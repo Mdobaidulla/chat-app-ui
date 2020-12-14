@@ -8,15 +8,14 @@ class App extends Component{
 constructor(props){
 super(props)
 this.state={
-  currentUser:'bb'
+  currentUser:'',
+  
   }  
 }
 
 setCurrentUser= (currentUser)=>{
   this.setState({
-   // currentUser: [...this.state.currentUser, currentUser],
-   currentUser:currentUser
-   
+   currentUser:currentUser,
   });
 }
   render(){
@@ -31,15 +30,14 @@ setCurrentUser= (currentUser)=>{
   </header>
    <main>
     
-      {
-      !this.state.currentUser
-      ?<Landing setCurrentUser={this.setCurrentUser}/>
+      {!this.state.currentUser
+      ?<Landing setCurrentUser={this.setCurrentUser} />
       :
       <div className='chat_page'>
-    {this.state.currentUser == null}
-      <Layout /> 
+    
+      <Layout currentUser={this.state.currentUser} /> 
       </div> 
-  }
+      }
   </main>
   <footer>
     Contact:
