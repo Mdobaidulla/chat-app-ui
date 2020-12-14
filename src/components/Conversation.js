@@ -8,12 +8,19 @@ class Conversation extends Component{
         chats: [],
         chatroom: '',
         received_msg: '',
+        socket: null,
        }
    
     componentDidMount(){
         this.getConversation();
-        
     }
+
+    componentDidUnMount(){
+        if (this.state.socket != null) {
+            this.state.socket.disconnect();
+        }
+    }
+
     getConversation= async () =>{
         try {
         const allConversations = await axios(
@@ -25,10 +32,9 @@ class Conversation extends Component{
             chats: allConversations.data,
         });
 
-    } catch (err) {
-        console.log(err);
-      }
-      
+        } catch (err) {
+            console.log(err);
+        }
     }
 
     render(){
@@ -38,28 +44,38 @@ class Conversation extends Component{
             if (this.state.chatroom != this.props.chatroom) {
                 this.getConversation();
 
+                const socket = socketIOClient('http://localhost:5000');
+                socket.on('text_message', (text_msg) => {
+                    console.log("conversation text message: ", text_msg);
+
+                    let j = 0;
+                    let chatroomString = '';
+                    while(text_msg.charAt(j) != '|') {
+                        chatroomString = chatroomString + text_msg.charAt(j);
+                        j++;
+                    }
+                    console.log("chatroomString is " + chatroomString);
+
+                    if ((this.state.received_msg != text_msg) && (chatroomString == this.props.chatroom)) {
+                        this.getConversation();
+
+                        this.setState({
+                            received_msg: text_msg,
+                        })
+                    }
+                });
+
                 this.setState({
                     chatroom: this.props.chatroom,
+                    socket: socket,
                 });
-            }
-            
+            } 
         }
-
-        const socket = socketIOClient('http://localhost:5000');
-        socket.on('text_message', (text_msg) => {
-            console.log("text message", text_msg);
-            if (this.state.received_msg != text_msg) {
-                this.getConversation();
-
-                this.setState({
-                    received_msg: text_msg,
-                })
-            }
-        });
 
         const allMessages = this.state.chats.map((chat, index)=>{
             return(
-                <Message key={index} user={chat.user} message={chat.message} timestamp={chat.createdAt}/>
+                <Message key={index} user={chat.user} message={chat.message} timestamp={chat.createdAt} 
+                id={chat._id} getConversation={this.getConversation}/>
             )
         })
 

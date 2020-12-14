@@ -3,6 +3,7 @@ import Profile from './profile/Profile'
 import ChatRooms from './ChatRooms';
 import Conversation from './Conversation';
 import ChatBox from './ChatBox';
+import ChatroomControl from './ChatroomControl';
 
 class Layout extends Component{
   constructor(props) {
@@ -12,6 +13,7 @@ class Layout extends Component{
       current_user: '5fd58c2dffb1f422940fe756',  //Luke Skywalker
       // current_user: '5fd29550366898c19ea1086e',  //Han Solo
       chatroom: '',
+      chatrooms: [],
     }
   }
 
@@ -21,6 +23,15 @@ class Layout extends Component{
     
     this.setState({
       chatroom: chatroom,
+    })
+  }
+
+  showChatrooms = (chatrooms) => {
+    console.log('showChatrooms function');
+    console.log("show Chatrooms: " + chatrooms);
+    
+    this.setState({
+      chatrooms: chatrooms,
     })
   }
   
@@ -33,14 +44,19 @@ class Layout extends Component{
               </div>
               <div className="chat-main-room">
                 <div className="chat-main-room-left">
-                <ChatRooms current_user={this.state.current_user} showConversation={this.showConversation}/>
+                          <div>Add Email Address</div>
+                          <div>Press Enter to Open Chat Room:</div>
+                          <ChatroomControl current_user={this.state.current_user} chatrooms={this.state.chatrooms}
+                            showChatrooms={this.showChatrooms}/>
+                 <ChatRooms current_user={this.state.current_user} showConversation={this.showConversation}
+                    showChatrooms={this.showChatrooms} chatrooms={this.state.chatrooms}/>
                   </div>
                   <div className="chat-main-room-right">
                     <div className="conversation">
                     <Conversation chatroom={this.state.chatroom}/>
                     </div>
                     <div className="chat-main-room-footer">
-                       <ChatBox current_user={this.state.current_user} chatroom={this.state.chatroom}/> 
+                    <ChatBox current_user={this.state.current_user} chatroom={this.state.chatroom}/>
                     </div>
                   </div>
               </div>
