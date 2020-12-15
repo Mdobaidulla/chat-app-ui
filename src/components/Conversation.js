@@ -1,7 +1,8 @@
-import React, {Component} from 'react';
+import React, {Component, useEffect, useRef} from 'react';
 import axios from 'axios';
 import Message from './Message';
 import socketIOClient from "socket.io-client";
+
 
 class Conversation extends Component{
     state={
@@ -10,9 +11,10 @@ class Conversation extends Component{
         received_msg: '',
         socket: null,
        }
-   
+
     componentDidMount(){
         this.getConversation();
+        this.scrollToBottom();
     }
 
     componentDidUnMount(){
@@ -20,6 +22,15 @@ class Conversation extends Component{
             this.state.socket.disconnect();
         }
     }
+
+    componentDidUpdate() {
+        this.scrollToBottom();
+      }
+
+//This method will update the 
+    scrollToBottom = () => {
+        this.messagesEnd.scrollIntoView({ behavior: "smooth" });
+      }
 
     getConversation= async () =>{
         try {
@@ -84,11 +95,15 @@ class Conversation extends Component{
         })
 
         return(
-         <>    
-		    <h3>{allMessages}</h3>
-         </>
+        <>
+         <div >    
+		    <h3  >{ allMessages}</h3 >
+         </div>
+          <div style={{ float:"left", clear: "both" }}
+          ref={(el) => { this.messagesEnd = el; }}>
+          </div>
+        </>
         )
     }
 }
-
 export default Conversation;

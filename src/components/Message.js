@@ -36,7 +36,7 @@ class Message extends Component{
         let month = Number(date.getUTCMonth()) + 1;
 
         let ampm;
-        if (hours > 12) {
+        if (hours >= 12) {
             ampm = 'pm';
         }
         else {

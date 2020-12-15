@@ -31,6 +31,8 @@ class Layout extends Component{
     }
   }
 
+ 
+
   showConversation = (chatroom) => {
     console.log('the chatroom is working');
     console.log("show Conversation: " + chatroom);
@@ -134,7 +136,7 @@ logout= ()=>{
                     showChatrooms={this.showChatrooms} chatrooms={this.state.chatrooms}/>
                   </div>
                   <div className="chat-main-room-right">
-                    <div className="conversation">
+                    <div className="conversation" >
                     <Conversation chatroom={this.state.chatroom} currentUser={this.state.currentUser}/>
                     </div>
                     <div className="chat-main-room-footer">

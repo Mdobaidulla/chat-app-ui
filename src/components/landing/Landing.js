@@ -56,11 +56,10 @@ login = async (e, login) => {
    
 render(){
    return(
-
-        
     <div className="landing_page">
         <div className="left_part">
         <Login login={this.login}/>
+         
         </div>
         <div className="right_part">
 

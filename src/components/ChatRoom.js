@@ -65,7 +65,6 @@ class ChatRoom extends Component{
     }
 
     render(){
-        
         if (this.props.chatroom._id != this.state.chatroomId) {
             this.getOtherUser();
         }
