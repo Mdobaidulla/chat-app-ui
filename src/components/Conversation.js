@@ -74,8 +74,12 @@ class Conversation extends Component{
 
         const allMessages = this.state.chats.map((chat, index)=>{
             return(
-                <Message key={index} user={chat.user} message={chat.message} timestamp={chat.createdAt} 
-                id={chat._id} getConversation={this.getConversation}/>
+                <Message key={index} user={chat.user}
+                user={chat.user}
+                 message={chat.message} timestamp={chat.createdAt} 
+                id={chat._id} getConversation={this.getConversation}
+                currentUser={this.props.currentUser}
+                />
             )
         })
 

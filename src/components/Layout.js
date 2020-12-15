@@ -5,11 +5,13 @@ import Conversation from './Conversation';
 import ChatBox from './ChatBox';
 import ChatroomControl from './ChatroomControl';
 import DropdownNewChat from './DropdownNewChat';
+import axios from 'axios';
+import { Icon } from 'semantic-ui-react';
+
 
 class Layout extends Component{
   constructor(props) {
     super(props);
-    
     this.state = {
       // current_user: '5fd293f5366898c19ea1086d',  //Luke Skywalker
       // current_user: '5fd29550366898c19ea1086e',  //Han Solo
@@ -17,13 +19,22 @@ class Layout extends Component{
       chatroom: '',
       chatrooms: [],
       users: [],
+      currentUser:this.props.currentUser,
+      userToEdit: {
+        first_name: '',
+        last_name: '',
+        email: '',
+        password:'',
+        id: '',
+      },
+      showEditModal: false,
     }
   }
 
   showConversation = (chatroom) => {
     console.log('the chatroom is working');
     console.log("show Conversation: " + chatroom);
-    
+  
     this.setState({
       chatroom: chatroom,
     })
@@ -40,13 +51,76 @@ class Layout extends Component{
     });
   }
   
-  render(){
+//PROFILE UPDATE
 
+openAndEdit = (userFromTheList) => {
+  console.log(userFromTheList, ' userToEdit  ');
+
+  this.setState({
+    showEditModal: true,
+    userToEdit: {
+      ...userFromTheList,
+    },
+  });
+};
+
+handleEditChange = (e) => {
+  this.setState({
+    userToEdit: {
+      ...this.state.userToEdit,
+      [e.currentTarget.name]: e.currentTarget.value,
+    },
+  });
+};
+//Seding update request for user profile
+closeAndEdit = async (e) => {
+  e.preventDefault();
+  try {
+    const editResponse = await axios.put(
+      'http://localhost:5000/users/' +
+       this.state.current_user,
+        this.state.userToEdit
+    );
+    this.setState({
+      showEditModal: false,
+      currentUser: editResponse.data,
+      current_user:editResponse.data._id,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+
+//LOG OUT 
+logout= ()=>{
+ this.props.setCurrentUser('')
+
+}
+
+  render(){
+    console.log(this.state.currentUser,'printing current usere from state');
       return(
             <div className="chat-room">
               <div className="chat-room-header">
                <div className="profile_name"> 
-              {this.props.currentUser.first_name}  {this.props.currentUser.last_name}
+                <div className="left_header">
+                    <i onClick={() => this.openAndEdit(this.state.currentUser)}>
+                    <Icon color="black" name='setting' size='larg' />
+                      </i> 
+                    <Profile 
+                    handleEditChange={this.handleEditChange}
+                    open={this.state.showEditModal}
+                    userToEdit={this.state.userToEdit}
+                    closeAndEdit={this.closeAndEdit}
+                    />
+                    {this.state.currentUser.first_name}  {this.state.currentUser.last_name}
+                    </div>
+                    <div className="right_header">
+                    <i onClick={() => this.logout()}>
+                    <Icon color='red' name='power off' size='larg' />
+                      </i> 
+                    </div>
               </div>
               </div>
               <div className="chat-main-room">
@@ -62,7 +136,7 @@ class Layout extends Component{
                   </div>
                   <div className="chat-main-room-right">
                     <div className="conversation">
-                    <Conversation chatroom={this.state.chatroom}/>
+                    <Conversation chatroom={this.state.chatroom} currentUser={this.state.currentUser}/>
                     </div>
                     <div className="chat-main-room-footer">
                     <ChatBox current_user={this.state.current_user} chatroom={this.state.chatroom}/>
