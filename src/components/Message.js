@@ -31,7 +31,9 @@ class Message extends Component{
         let date = new Date(this.props.timestamp);
         let hours = date.getHours();
         let minutes = date.getMinutes();
-        let seconds = date.getSeconds();
+        // let seconds = date.getSeconds();
+
+        let month = Number(date.getUTCMonth()) + 1;
 
         let ampm;
         if (hours > 12) {
@@ -47,11 +49,11 @@ class Message extends Component{
             minutes = '0' + minutes;
         }
 
-        if (seconds < 10) {
-            seconds = '0' + seconds;
-        }
+        // if (seconds < 10) {
+        //     seconds = '0' + seconds;
+        // }
 
-        let timestamp = hours + ":" + minutes + ":" + seconds + ' ' + ampm;
+        let timestamp = hours + ":" + minutes + ' ' + ampm;
         timestamp = timestamp + ' ' + '(' + (Number(date.getUTCMonth()) + 1) + '-' + date.getDate() + '-' + date.getFullYear() + '):';
         console.log('timestamp is ', timestamp);
         

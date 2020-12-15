@@ -30,9 +30,11 @@ class Person extends Component{
             <div className="left aligned column" onClick={() => this.props.showConversation(this.props.chatroom_id)}>
                 <div className="ui vertical fluid menu contcat">
                         <div className="char_room_list">
-                        <img src={ProfileDefaultImage} height="40" width="40" className="images" />
-                        {this.props.first_name} {this.props.last_name } {this.props.chatroom_id}
                         <i onClick={this.deleteChatroom}> <Icon name='trash alternate outline' size='small' /></i>
+                        <img src={ProfileDefaultImage} height="40" width="40" className="images" />
+                        {this.props.first_name} {this.props.last_name }
+                        <br></br>
+                        {this.props.email}
                         </div>
                 </div>
             </div>
