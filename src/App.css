@@ -1,52 +1,65 @@
+/* App.js */
+.app_js{
+  margin: 0px auto;
+  min-height: 100vh;
+  display:flex;
+  flex-direction: column;
+  background-image: url('../src/images/back.JPG');
+  background-size: cover;
+}
 header{
   background:#f58002;
   height:10vh;
 }
 .header-container{
-  margin: 0px auto;
-  max-width:1140px;
+  padding-left:5vh;
   color:#FFFFFF;
   display:flex;
+  margin:0 auto;
+  max-width: 1240px;
 }
 .logos{
   width:10vh;
   height:10vh;
+  border-radius:50%;
 }
 .images{
   border-radius:50%;
 }
 .main-header{
-  line-height:10px;
-  padding-left:20px;
+ line-height:10px;
+ padding-left:20px;
 }
 main{
-  /* height:80vh; */
-  background-image: url('../src/images/back.JPG');
-  background-size: cover;
+ margin:0px auto;
+ max-width: 1240px;
+ flex-grow:1;
+ border-left:2px solid #FFFFFF;
+ border-right:2px solid #FFFFFF;
 }
 footer{
   background:#000000;
+  color:#FFFFFF;
   height:10vh;
 }
-
+.footer_container{
+  margin:0 auto;
+ max-width: 1240px;
+ padding:5px;
+}
 
 
 /* main_page  start */
 .landing_page{
-  margin:0 auto;
-  max-width:1140px;
-  min-height: 80vh;
   display:flex;
   justify-content:space-around;
   align-items: left;
-  border-left:2px solid #FFFFFF;
-  border-right:2px solid #FFFFFF;
-
 }
 .left_part{
   padding-top:5vh;
   width:50vh;
 }
+
 .right_part{
   width:50%;
   padding-top:2vh;
@@ -58,25 +71,18 @@ footer{
  }
 
 
- /* Chat page */
-
- .chat_page{
-  margin:0 auto;
-  max-width:1140px;
-  min-height: 80vh;
+ /* Chat Page */
+ .chat-room{
+  margin:0px auto;
+  max-width: 1240px;
   display:flex;
-  flex-direction:row;
-  align-items: left;
-  border-left:2px solid #FFFFFF;
-  border-right:2px solid #FFFFFF;
- 
+  flex-direction:column;
  }
 .chat-room-header{
   height:7vh;
   width:1137px;
   background-color:#e4a825;
   color:#FFFFFF;
-
 }
 .profile_name{
    padding:2vh; 
@@ -99,7 +105,6 @@ width:25%;
 
 }
 .chat-main-room-right{
-
 width:75%;
 min-height: 73vh;
 display: flex;
@@ -145,14 +150,14 @@ outline: none;
 .char_room_list{
  display: flex; 
 }
-
 /* Message component */
 
 .message_layout_a{
 border-radius:10px;
 background:#edebeb;
 font-size:14px;
-max-width:45%;
+max-width:50%;
+
 background-color:#bdfaf6;
 }
 .user_a_massages{
@@ -175,3 +180,49 @@ background-color:#bdfaf6;
   max-width:45%;
   background-color:#e1dbdb;
   }
+
+
+
+
+
+
+
+
+
+  /* Mobile view*/
+@media screen and (max-width: 640px) {
+  .header-container{
+    padding-left:1vh;
+    color:#FFFFFF;
+    display:flex;
+    margin:0 auto;
+    max-width: 1240px;
+  }
+  .main-header{
+    font-size:20px;
+  }
+  main{
+    margin:0 auto;
+    max-width: 1240px;
+    flex-grow:1;
+    border-left:2px solid #FFFFFF;
+    border-right:2px solid #FFFFFF;
+   }
+ .left_part{
+   margin:0 auto;
+   width: 90%;
+ }
+  .landing_page{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .right_part{
+    margin:0 auto;
+    width: 90%;
+     }
+  .inof{
+    border:.5px solid #FFFFFF;
+    padding:5px;
+  }
+}
