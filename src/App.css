@@ -175,3 +175,8 @@ background-color:#bdfaf6;
   max-width:45%;
   background-color:#e1dbdb;
   }
+
+  .highlight{
+    background-color: cyan;
+    color: black;
+  }

@@ -25,11 +25,24 @@ class Person extends Component{
     }
 
     render(){
-      
+        console.log("this.props.highlight_chatroom: ", this.props.highlight_chatroom);
+        console.log("this.props.chatroom_id: ", this.props.chatroom_id);
+
+        let highlight_message = "";
+        let classString = "char_room_list";
+        if (this.props.highlight_chatroom == this.props.chatroom_id) {
+            highlight_message = "XXXXX";
+            classString = "char_room_list highlight";
+        }
+        else {
+            highlight_message = "";
+            classString = "char_room_list";
+        }
+
         return(
             <div className="left aligned column" onClick={() => this.props.showConversation(this.props.chatroom_id)}>
                 <div className="ui vertical fluid menu contcat">
-                        <div className="char_room_list">
+                        <div className={classString}>
                         <i onClick={this.deleteChatroom}> <Icon name='trash alternate outline' size='small' /></i>
                         <img src={ProfileDefaultImage} height="40" width="40" className="images" />
                         {this.props.first_name} {this.props.last_name }

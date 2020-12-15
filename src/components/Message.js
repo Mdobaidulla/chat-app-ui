@@ -33,17 +33,84 @@ class Message extends Component{
         let minutes = date.getMinutes();
         // let seconds = date.getSeconds();
 
-        let month = Number(date.getUTCMonth()) + 1;
+        let monthNum = date.getUTCMonth();
+        let month = '';
+        switch(monthNum) {
+            case 0:
+                month = "Jan";
+                break;
+            case 1:
+                month = "Feb";
+                break; 
+            case 2:
+                month = "Mar";
+                break;
+            case 3:
+                month = "Apr";
+                break;
+            case 4:
+                month = "May";
+                break; 
+            case 5:
+                month = "Jun";
+                break;
+            case 6:
+                month = "Jul";
+                break;
+            case 7:
+                month = "Aug";
+                break; 
+            case 8:
+                month = "Sep";
+                break;
+            case 9:
+                month = "Oct";
+                break;
+            case 10:
+                month = "Nov";
+                break; 
+            case 11:
+                month = "Dec";
+                break;   
+        }
+
+        let dayNum = date.getDay();
+        let day = '';
+        switch(dayNum) {
+            case 0:
+                day = "Sun";
+                break;
+            case 1:
+                day = "Mon";
+                break; 
+            case 2:
+                day = "Tue";
+                break;
+            case 3:
+                day = "Wed";
+                break;
+            case 4:
+                day = "Thr";
+                break; 
+            case 5:
+                day = "Fri";
+                break;
+            case 6:
+                day = "Sat";
+                break;  
+        }
 
         let ampm;
-        if (hours > 12) {
+        if (hours >= 12) {
             ampm = 'pm';
         }
         else {
             ampm = 'am';
         }
 
-        hours = hours % 12;
+        if (hours > 12) {
+            hours = hours % 12;
+        }
 
         if (minutes < 10) {
             minutes = '0' + minutes;
@@ -53,8 +120,8 @@ class Message extends Component{
         //     seconds = '0' + seconds;
         // }
 
-        let timestamp = hours + ":" + minutes + ' ' + ampm;
-        timestamp = timestamp + ' ' + '(' + (Number(date.getUTCMonth()) + 1) + '-' + date.getDate() + '-' + date.getFullYear() + '):';
+        let timestamp = `  ` + hours + ":" + minutes + ' ' + ampm;
+        timestamp = timestamp + ' ' + day + ', ' + month + '. ' + date.getDate();
         console.log('timestamp is ', timestamp);
         
         this.setState({

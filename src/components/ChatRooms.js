@@ -33,6 +33,7 @@ class ChatRooms extends Component{
 
     render(){
         console.log("this.props.chatrooms.length is " + this.props.chatrooms.length);
+        console.log("chatrooms: this.props.highlight_chatroom: ", this.props.highlight_chatroom);
 
         if (this.state.length != this.props.chatrooms.length) {
             this.getAllChatrooms();
@@ -46,7 +47,8 @@ class ChatRooms extends Component{
             console.log("chatroom is " + chatroom._id);
             return(
                 <ChatRoom key={index} chatroom={chatroom} current_user={this.props.current_user}
-                showConversation={this.props.showConversation} getAllChatrooms={this.getAllChatrooms}/>
+                showConversation={this.props.showConversation} getAllChatrooms={this.getAllChatrooms}
+                highlight_chatroom={this.props.highlight_chatroom}/>
             )
         })
         return(
