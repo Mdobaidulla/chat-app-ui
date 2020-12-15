@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import ChatRoom from './ChatRoom';
 
 class ChatroomControl extends Component{
     state={
@@ -15,7 +14,7 @@ class ChatroomControl extends Component{
         if(event.keyCode == 13 && event.shiftKey == false) {
             event.preventDefault();
             this.handleSendClick();
-          }
+        }
     }
 
     handleSendClick = async (event) => {

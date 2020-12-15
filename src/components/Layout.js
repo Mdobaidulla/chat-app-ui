@@ -4,6 +4,7 @@ import ChatRooms from './ChatRooms';
 import Conversation from './Conversation';
 import ChatBox from './ChatBox';
 import ChatroomControl from './ChatroomControl';
+import DropdownNewChat from './DropdownNewChat';
 import axios from 'axios';
 import { Icon } from 'semantic-ui-react';
 
@@ -12,9 +13,12 @@ class Layout extends Component{
   constructor(props) {
     super(props);
     this.state = {
+      // current_user: '5fd293f5366898c19ea1086d',  //Luke Skywalker
+      // current_user: '5fd29550366898c19ea1086e',  //Han Solo
       current_user: this.props.currentUser._id,
       chatroom: '',
       chatrooms: [],
+      users: [],
       currentUser:this.props.currentUser,
       userToEdit: {
         first_name: '',
@@ -39,10 +43,12 @@ class Layout extends Component{
   showChatrooms = (chatrooms) => {
     console.log('showChatrooms function');
     console.log("show Chatrooms: " + chatrooms);
+    console.log("show Chatrooms.data: " + chatrooms.data);
+    console.log("show Chatrooms.length: " + chatrooms.length);
     
     this.setState({
       chatrooms: chatrooms,
-    })
+    });
   }
   
 //PROFILE UPDATE
@@ -121,9 +127,11 @@ logout= ()=>{
                 <div className="chat-main-room-left">
                   <div>Add Email Address</div>
                   <div>Press Enter to Open Chat Room:</div>
-                   <ChatroomControl current_user={this.state.current_user} chatrooms={this.state.chatrooms}
-                            showChatrooms={this.showChatrooms}/>
-                 <ChatRooms current_user={this.state.current_user} showConversation={this.showConversation}
+                  <DropdownNewChat users={this.state.users} current_user={this.state.current_user}
+                    showChatrooms={this.showChatrooms}/>
+                  <ChatroomControl current_user={this.state.current_user} chatrooms={this.state.chatrooms}
+                    showChatrooms={this.showChatrooms}/>
+                  <ChatRooms current_user={this.state.current_user} showConversation={this.showConversation}
                     showChatrooms={this.showChatrooms} chatrooms={this.state.chatrooms}/>
                   </div>
                   <div className="chat-main-room-right">

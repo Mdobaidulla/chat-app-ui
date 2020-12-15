@@ -5,12 +5,12 @@ import ChatRoom from './ChatRoom';
 class ChatRooms extends Component{
     state={
         contacts:[],
-        // chatrooms: [],
+        chatrooms: [],
+        length: 0,
        }
    
     componentDidMount(){
         this.getAllChatrooms();
-        
     }
 
     getAllChatrooms= async () =>{
@@ -20,9 +20,9 @@ class ChatRooms extends Component{
         );
         console.log('All Chatroom Values', allChatrooms.data);
 
-        // this.setState({
-        //     chatrooms: allChatrooms.data
-        // });
+        this.setState({
+            chatrooms: allChatrooms.data,
+        });
 
         this.props.showChatrooms(allChatrooms.data);
 
@@ -32,8 +32,18 @@ class ChatRooms extends Component{
     }
 
     render(){
-        const allChatrooms = this.props.chatrooms.map((chatroom, index)=>{
-            console.log("chatroom is " + chatroom.chatroom_id);
+        console.log("this.props.chatrooms.length is " + this.props.chatrooms.length);
+
+        if (this.state.length != this.props.chatrooms.length) {
+            this.getAllChatrooms();
+
+            this.setState({
+                length: this.props.chatrooms.length,
+            });
+        }
+
+        const allChatrooms = this.props.chatrooms.map((chatroom, index) => {
+            console.log("chatroom is " + chatroom._id);
             return(
                 <ChatRoom key={index} chatroom={chatroom} current_user={this.props.current_user}
                 showConversation={this.props.showConversation} getAllChatrooms={this.getAllChatrooms}/>

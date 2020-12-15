@@ -25,6 +25,7 @@ class Person extends Component{
     }
 
     render(){
+      
         return(
             <div className="left aligned column" onClick={() => this.props.showConversation(this.props.chatroom_id)}>
                 <div className="ui vertical fluid menu contcat">
