@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Modal, Header, Content, Form, Label, Button} from 'semantic-ui-react';
+import {Modal, Header, Form, Label, Button} from 'semantic-ui-react';
 
 class Profile extends Component{
 

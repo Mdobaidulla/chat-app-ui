@@ -58,17 +58,15 @@ render(){
    return(
     <div className="landing_page">
         <div className="left_part">
-        <Login login={this.login}/>
-         
+        <h1>Stay Connected?</h1>
+          <Login login={this.login}/>
         </div>
         <div className="right_part">
-
-        <p className="inof">This is a web based chat app that will allow all the registered people to chat with each other.
-        The main goal to keep all the Pru Full-stake developer connect and if anyone interested to take this app 
-        little father. Most welcome to join and start working on this app. </p>
-
-        <CreateUser crateUser={this.crateUser}/>
-      
+          <p className="inof">
+            This is a web based chat app that will allow all the registered people to chat with each other.
+            The main goal to keep all the Pru Full-stake developer connected and if anyone interested to take this app 
+            little father. Most welcome to join and start working on this app. </p>
+          <CreateUser crateUser={this.crateUser}/>
         </div>
     </div>
       
