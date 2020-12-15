@@ -76,7 +76,7 @@ class DropdownNewChat extends Component{
 
         return(
          <>    
-            <Dropdown placeholder='Emails of Users' search selection options={emailList} 
+            <Dropdown placeholder='Search Users' search selection options={emailList} 
             onChange={this.handleDropDownSelect} value={this.state.selection}/>
          </>
         )

@@ -125,12 +125,11 @@ logout= ()=>{
               </div>
               <div className="chat-main-room">
                 <div className="chat-main-room-left">
-                  <div>Add Email Address</div>
-                  <div>Press Enter to Open Chat Room:</div>
                   <DropdownNewChat users={this.state.users} current_user={this.state.current_user}
                     showChatrooms={this.showChatrooms}/>
-                  <ChatroomControl current_user={this.state.current_user} chatrooms={this.state.chatrooms}
-                    showChatrooms={this.showChatrooms}/>
+                  {/* <ChatroomControl current_user={this.state.current_user} chatrooms={this.state.chatrooms}
+                    showChatrooms={this.showChatrooms}/> */}
+                    <hr/>
                   <ChatRooms current_user={this.state.current_user} showConversation={this.showConversation}
                     showChatrooms={this.showChatrooms} chatrooms={this.state.chatrooms}/>
                   </div>
