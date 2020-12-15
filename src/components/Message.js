@@ -9,6 +9,7 @@ class Message extends Component{
         last_name: '',
         message: '',
         timestamp: '',
+        currentUser:this.props.currentUser,
        }
    
     componentDidMount(){
@@ -96,20 +97,49 @@ class Message extends Component{
         }
 
         return(
-            <div className="left aligned column">
-                <div className="ui vertical fluid menu contcat">
-                
-                        <tr>
-                        <img src="https://res.cloudinary.com/dpggpg7su/image/upload/v1607664270/samples/0-02-01-0f58eb7f4cdf9b213c846bef3dc94c19f8969c3bf87783242ea6108cfb8a7313_1c6da0a1ccaa58_qmytn8.jpg"
-                        height="50" width="50" className="images"
-                        />{name}: {this.state.timestamp}
-                        </tr>
-                        <tr>
-                            {this.props.message}
-                        </tr>
-                        <button onClick={this.deleteMessage}>Delete</button>
-                </div>
-            </div>
+            <>
+                        <br></br>  
+                        {this.props.currentUser._id == this.props.user ?
+                        <div className="user_a_massages">
+                            <div>
+                            </div>
+                            <div className="message_layout_a">
+                                <div className="message_layout_header">
+                                    <div >
+                                       {name}
+                                    </div>
+                                    <div>
+                                      {this.state.timestamp}
+                                    </div>  
+                                </div>
+                                <div className="actual_message">
+                                     {this.props.message}
+                                </div>
+                            </div>
+                        </div>
+                        :
+                        <div className="user_a_massages">
+                        
+                        <div className="message_layout_b">
+                            <div className="message_layout_header">
+                                <div >
+                                   {name}
+                                </div>
+                                <div>
+                                  {this.state.timestamp}
+                                </div>  
+                            </div>
+                            <div className="actual_message">
+                                 {this.props.message}
+                            </div>
+                        </div>
+                        <div>
+                        </div>
+                    </div>
+                        }
+                        
+              
+            </>
         )
     }
 }
