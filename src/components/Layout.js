@@ -4,6 +4,7 @@ import ChatRooms from './ChatRooms';
 import Conversation from './Conversation';
 import ChatBox from './ChatBox';
 import ChatroomControl from './ChatroomControl';
+import DropdownNewChat from './DropdownNewChat';
 
 class Layout extends Component{
   constructor(props) {
@@ -15,6 +16,7 @@ class Layout extends Component{
       current_user: this.props.currentUser._id,
       chatroom: '',
       chatrooms: [],
+      users: [],
     }
   }
 
@@ -30,10 +32,12 @@ class Layout extends Component{
   showChatrooms = (chatrooms) => {
     console.log('showChatrooms function');
     console.log("show Chatrooms: " + chatrooms);
+    console.log("show Chatrooms.data: " + chatrooms.data);
+    console.log("show Chatrooms.length: " + chatrooms.length);
     
     this.setState({
       chatrooms: chatrooms,
-    })
+    });
   }
   
   render(){
@@ -47,11 +51,13 @@ class Layout extends Component{
               </div>
               <div className="chat-main-room">
                 <div className="chat-main-room-left">
-                          <div>Add Email Address</div>
-                          <div>Press Enter to Open Chat Room:</div>
-                          <ChatroomControl current_user={this.state.current_user} chatrooms={this.state.chatrooms}
-                            showChatrooms={this.showChatrooms}/>
-                 <ChatRooms current_user={this.state.current_user} showConversation={this.showConversation}
+                  <div>Add Email Address</div>
+                  <div>Press Enter to Open Chat Room:</div>
+                  <DropdownNewChat users={this.state.users} current_user={this.state.current_user}
+                    showChatrooms={this.showChatrooms}/>
+                  <ChatroomControl current_user={this.state.current_user} chatrooms={this.state.chatrooms}
+                    showChatrooms={this.showChatrooms}/>
+                  <ChatRooms current_user={this.state.current_user} showConversation={this.showConversation}
                     showChatrooms={this.showChatrooms} chatrooms={this.state.chatrooms}/>
                   </div>
                   <div className="chat-main-room-right">

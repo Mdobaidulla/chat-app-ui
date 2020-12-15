@@ -14,7 +14,7 @@ class ChatroomControl extends Component{
         if(event.keyCode == 13 && event.shiftKey == false) {
             event.preventDefault();
             this.handleSendClick();
-          }
+        }
     }
 
     handleSendClick = async (event) => {
