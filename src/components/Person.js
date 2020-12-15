@@ -30,9 +30,20 @@ class Person extends Component{
 
         let highlight_message = "";
         let classString = "char_room_list";
-        if (this.props.highlight_chatroom == this.props.chatroom_id) {
-            highlight_message = "XXXXX";
+        if ((this.props.highlight_chatroom == this.props.chatroom_id) && 
+        (this.props.highlight_current_chatroom != this.props.chatroom_id)) {
+            highlight_message = "pending";
             classString = "char_room_list highlight";
+        }
+        else if ((this.props.highlight_chatroom != this.props.chatroom_id) && 
+        (this.props.highlight_current_chatroom == this.props.chatroom_id)) {
+            highlight_message = "current";
+            classString = "char_room_list highlight_current";
+        }
+        else if ((this.props.highlight_chatroom == this.props.chatroom_id) && 
+        (this.props.highlight_current_chatroom == this.props.chatroom_id)) {
+            highlight_message = "current";
+            classString = "char_room_list highlight_current";
         }
         else {
             highlight_message = "";
@@ -47,7 +58,7 @@ class Person extends Component{
                         <img src={ProfileDefaultImage} height="40" width="40" className="images" />
                         {this.props.first_name} {this.props.last_name }
                         <br></br>
-                        {this.props.email}
+                        {this.props.email} {highlight_message}
                         </div>
                 </div>
             </div>

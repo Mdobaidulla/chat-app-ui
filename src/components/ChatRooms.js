@@ -48,7 +48,8 @@ class ChatRooms extends Component{
             return(
                 <ChatRoom key={index} chatroom={chatroom} current_user={this.props.current_user}
                 showConversation={this.props.showConversation} getAllChatrooms={this.getAllChatrooms}
-                highlight_chatroom={this.props.highlight_chatroom}/>
+                highlight_chatroom={this.props.highlight_chatroom} 
+                highlight_current_chatroom={this.props.highlight_current_chatroom}/>
             )
         })
         return(
