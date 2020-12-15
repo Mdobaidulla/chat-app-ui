@@ -181,14 +181,15 @@ background-color:#bdfaf6;
   background-color:#e1dbdb;
   }
 
+  .highlight{
+    background-color: cyan;
+    color: black;
+  }
 
 
 
 
-
-
-
-
+  
   /* Mobile view*/
 @media screen and (max-width: 640px) {
   .header-container{

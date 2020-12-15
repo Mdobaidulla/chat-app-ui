@@ -28,6 +28,7 @@ class Layout extends Component{
         id: '',
       },
       showEditModal: false,
+      highlight_chatroom: '',
     }
   }
 
@@ -36,9 +37,15 @@ class Layout extends Component{
   showConversation = (chatroom) => {
     console.log('the chatroom is working');
     console.log("show Conversation: " + chatroom);
+
+    let chatroom_to_highlight = this.state.highlight_chatroom;
+    if (chatroom == this.state.highlight_chatroom) {
+      chatroom_to_highlight = '';
+    }
   
     this.setState({
       chatroom: chatroom,
+      highlight_chatroom: chatroom_to_highlight,
     })
   }
 
@@ -74,6 +81,15 @@ handleEditChange = (e) => {
     },
   });
 };
+
+handleHighlightChatroom = (chatroom) => {
+  console.log("handleHighlightChatroom: " + chatroom);
+
+  this.setState({
+    highlight_chatroom: chatroom,
+  });
+};
+
 //Seding update request for user profile
 closeAndEdit = async (e) => {
   e.preventDefault();
@@ -133,11 +149,13 @@ logout= ()=>{
                     showChatrooms={this.showChatrooms}/> */}
                     <hr/>
                   <ChatRooms current_user={this.state.current_user} showConversation={this.showConversation}
-                    showChatrooms={this.showChatrooms} chatrooms={this.state.chatrooms}/>
+                    showChatrooms={this.showChatrooms} chatrooms={this.state.chatrooms} 
+                    highlight_chatroom={this.state.highlight_chatroom}/>
                   </div>
                   <div className="chat-main-room-right">
-                    <div className="conversation" >
-                    <Conversation chatroom={this.state.chatroom} currentUser={this.state.currentUser}/>
+                    <div className="conversation">
+                    <Conversation chatroom={this.state.chatroom} currentUser={this.state.currentUser}
+                      handleHighlightChatroom={this.handleHighlightChatroom}/>
                     </div>
                     <div className="chat-main-room-footer">
                     <ChatBox current_user={this.state.current_user} chatroom={this.state.chatroom}/>

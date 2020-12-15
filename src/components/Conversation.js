@@ -67,12 +67,17 @@ class Conversation extends Component{
                     }
                     console.log("chatroomString is " + chatroomString);
 
-                    if ((this.state.received_msg != text_msg) && (chatroomString == this.props.chatroom)) {
-                        this.getConversation();
-
-                        this.setState({
-                            received_msg: text_msg,
-                        })
+                    if (chatroomString == this.props.chatroom) {
+                        if (this.state.received_msg != text_msg) {
+                            this.getConversation();
+    
+                            this.setState({
+                                received_msg: text_msg,
+                            })
+                        }
+                    }
+                    else {
+                        this.props.handleHighlightChatroom(chatroomString);
                     }
                 });
 
