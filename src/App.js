@@ -9,7 +9,6 @@ constructor(props){
 super(props)
 this.state={
   currentUser:'',
-  
   }  
 }
 
@@ -20,7 +19,7 @@ setCurrentUser= (currentUser)=>{
 }
   render(){
   return ( 
-  <>
+  <div className='app_js'>
   <header >
     <div className="header-container" >
         <img className="logos" src={logo}/>
@@ -39,10 +38,12 @@ setCurrentUser= (currentUser)=>{
       }
   </main>
   <footer>
-    Contact:
+    <div className="footer_container">
+      Contact: Md Obaidulla & John Murphy
+    </div>
   </footer>
 
-</>
+</div>
     
   )
   };

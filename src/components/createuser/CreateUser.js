@@ -22,7 +22,7 @@ class CreateUser extends Component {
 
           <h1>Do not have Account?</h1>
           <p>SignUp now, it's free!!!</p>  
-          <Segment style={{ width: '100%' } }  stackable>
+          <Segment style={{ width: '100%' }} >
            
             <h2>SignUp</h2>
             <Form onSubmit={(e) => {
@@ -33,10 +33,10 @@ class CreateUser extends Component {
               <Form.Input type='text' name='last_name' value={this.state.last_name} placeholder="Last Name" onChange={this.handleChange} required/>
               <Form.Input type='text' name='email' value={this.state.email} placeholder="Email" onChange={this.handleChange} required/>
               <Form.Input type='text' name='password' value={this.state.password} placeholder="Password" onChange={this.handleChange} required/>
-              
               <Button className="regi-btn" type='Submit'>Submit</Button>
             </Form>
           </Segment>
+          <br></br>
           </>
           )
       }
