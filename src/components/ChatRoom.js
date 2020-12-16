@@ -74,7 +74,7 @@ class ChatRoom extends Component{
                     chatroom_id={this.state.chatroomId} showConversation={this.props.showConversation}
                     getAllChatrooms={this.props.getAllChatrooms} email={this.state.otherUserEmail}
                     chatroomId={this.props.chatroom._id} highlight_chatroom={this.props.highlight_chatroom}
-                />
+                    highlight_current_chatroom={this.props.highlight_current_chatroom}/>
             </>
         ) 
     }

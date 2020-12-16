@@ -182,7 +182,13 @@ background-color:#daf9f7;
   background-color:#e1dbdb;
   }
   .highlight{
-    background-color: cyan;
+    /* background-color:#e4a825; */
+    background-color: #960200;
+    color: white;
+  }
+
+  .highlight_current{
+    background-color:#ffd046;
     color: black;
   } 
   /* Mobile view*/

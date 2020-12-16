@@ -7,6 +7,7 @@ class ChatRooms extends Component{
         contacts:[],
         chatrooms: [],
         length: 0,
+        highlight_chatroom: '',
        }
    
     componentDidMount(){
@@ -43,12 +44,21 @@ class ChatRooms extends Component{
             });
         }
 
+        if (this.state.highlight_chatroom != this.props.highlight_chatroom) {
+            this.getAllChatrooms();
+
+            this.setState({
+                highlight_chatroom: this.props.highlight_chatroom,
+            });
+        }
+
         const allChatrooms = this.props.chatrooms.map((chatroom, index) => {
             console.log("chatroom is " + chatroom._id);
             return(
                 <ChatRoom key={index} chatroom={chatroom} current_user={this.props.current_user}
                 showConversation={this.props.showConversation} getAllChatrooms={this.getAllChatrooms}
-                highlight_chatroom={this.props.highlight_chatroom}/>
+                highlight_chatroom={this.props.highlight_chatroom} 
+                highlight_current_chatroom={this.props.highlight_current_chatroom}/>
             )
         })
         return(

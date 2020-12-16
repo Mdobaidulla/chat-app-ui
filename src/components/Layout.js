@@ -28,6 +28,8 @@ class Layout extends Component{
         id: '',
       },
       showEditModal: false,
+      highlight_chatroom: '',
+      highlight_current_chatroom: '',
     }
   }
 
@@ -36,10 +38,15 @@ class Layout extends Component{
   showConversation = (chatroom) => {
     console.log('the chatroom is working');
     console.log("show Conversation: " + chatroom);
-  
+    let chatroom_to_highlight = this.state.highlight_chatroom;
+    if (chatroom == this.state.highlight_chatroom) {
+      chatroom_to_highlight = '';
+    }
     this.setState({
       chatroom: chatroom,
-    })
+      highlight_chatroom: chatroom_to_highlight,
+    });
+    this.handleHighlightCurrentChatroom(chatroom);
   }
 
   showChatrooms = (chatrooms) => {
@@ -47,7 +54,6 @@ class Layout extends Component{
     console.log("show Chatrooms: " + chatrooms);
     console.log("show Chatrooms.data: " + chatrooms.data);
     console.log("show Chatrooms.length: " + chatrooms.length);
-    
     this.setState({
       chatrooms: chatrooms,
     });
@@ -74,6 +80,23 @@ handleEditChange = (e) => {
     },
   });
 };
+
+handleHighlightChatroom = (chatroom) => {
+  console.log("handleHighlightChatroom: " + chatroom);
+
+  this.setState({
+    highlight_chatroom: chatroom,
+  });
+};
+
+handleHighlightCurrentChatroom = (chatroom) => {
+  console.log("handleCurrentChatroom: " + chatroom);
+
+  this.setState({
+    highlight_current_chatroom: chatroom,
+  });
+};
+
 //Seding update request for user profile
 closeAndEdit = async (e) => {
   e.preventDefault();
@@ -130,7 +153,9 @@ logout= ()=>{
 
                     <hr/>
                   <ChatRooms current_user={this.state.current_user} showConversation={this.showConversation}
-                    showChatrooms={this.showChatrooms} chatrooms={this.state.chatrooms}/>
+                    showChatrooms={this.showChatrooms} chatrooms={this.state.chatrooms} 
+                    highlight_chatroom={this.state.highlight_chatroom}
+                    highlight_current_chatroom={this.state.highlight_current_chatroom}/>
                   </div>
                   <div className="chat-main-room-right">
                     <div className="conversation" >
