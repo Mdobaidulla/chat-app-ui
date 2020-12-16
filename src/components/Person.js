@@ -18,7 +18,7 @@ class Person extends Component{
 
         const chat = await axios({
             method: 'delete',
-            url: `http://localhost:5000/chatrooms/${this.props.chatroom_id}`
+            url: process.env.REACT_APP_API_URL+`/chatrooms/${this.props.chatroom_id}`
         });
 
         this.props.getAllChatrooms();

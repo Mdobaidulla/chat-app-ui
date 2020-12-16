@@ -37,7 +37,7 @@ setCurrentUser= (currentUser)=>{
   </main>
   <footer>
     <div className="footer_container">
-      Contact: Md Obaidulla & John Murphy
+      Contact:<br></br>John Murphy  & Md Obaidulla
     </div>
   </footer>
 

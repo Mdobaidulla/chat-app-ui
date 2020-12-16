@@ -15,7 +15,7 @@ class DropdownNewChat extends Component{
     getAllUserEmails= async () =>{
         try {
         const allUsers =await axios(
-            `http://localhost:5000/users/`
+            process.env.REACT_APP_API_URL+`/users/`
         );
         console.log('All User Emails', allUsers.data);
 
@@ -40,13 +40,13 @@ class DropdownNewChat extends Component{
         console.log("event.target", event.target);
         console.log("event.target.textContent", event.target.textContent);
 
-        let otherUser = await axios(`http://localhost:5000/users/userIdByEmail/${event.target.textContent}`);
+        let otherUser = await axios(process.env.REACT_APP_API_URL+`/users/userIdByEmail/${event.target.textContent}`);
 
         console.log("otherUser.data: ", otherUser.data);
 
         await axios({
             method: 'post',
-            url: 'http://localhost:5000/chatrooms',
+            url: process.env.REACT_APP_API_URL+'/chatrooms',
             data: {
                 users: [this.props.current_user, otherUser.data],
                 isActive: true,
@@ -54,7 +54,7 @@ class DropdownNewChat extends Component{
         });
 
         const allChatrooms = await axios(
-            `http://localhost:5000/chatrooms/chatroomWithUserId/${this.props.current_user}`
+            process.env.REACT_APP_API_URL+`/chatrooms/chatroomWithUserId/${this.props.current_user}`
         );
         console.log('All Chatroom Values', allChatrooms.data);
 
@@ -82,5 +82,4 @@ class DropdownNewChat extends Component{
         )
     }
 }
-
 export default DropdownNewChat;

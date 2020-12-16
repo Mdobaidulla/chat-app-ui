@@ -14,7 +14,7 @@ class Landing extends Component{
         try {
           // The createdDogResponse variable will store the response from the Flask API
           const createUserResponse = await axios.post(
-            'http://localhost:5000/users',
+            process.env.REACT_APP_API_URL+`/users`,
               user,{
               headers: {
                 'Content-Type': 'application/json'
@@ -30,12 +30,14 @@ class Landing extends Component{
       };
     
 //Login verification:
+//sending username and password from ui and validating from
+//DB using exprees post request with endpoin sessions
 login = async (e, login) => {
   e.preventDefault();
   try {
-    // The createdDogResponse variable will store the response from the Flask API
+ 
     const loggedInUserResponse = await axios.post(
-      'http://localhost:5000/sessions',
+      process.env.REACT_APP_API_URL+'/sessions',
         login,{
         headers: {
           'Content-Type': 'application/json'
