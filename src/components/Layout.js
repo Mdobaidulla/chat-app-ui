@@ -38,17 +38,14 @@ class Layout extends Component{
   showConversation = (chatroom) => {
     console.log('the chatroom is working');
     console.log("show Conversation: " + chatroom);
-
     let chatroom_to_highlight = this.state.highlight_chatroom;
     if (chatroom == this.state.highlight_chatroom) {
       chatroom_to_highlight = '';
     }
-  
     this.setState({
       chatroom: chatroom,
       highlight_chatroom: chatroom_to_highlight,
     });
-
     this.handleHighlightCurrentChatroom(chatroom);
   }
 
@@ -57,7 +54,6 @@ class Layout extends Component{
     console.log("show Chatrooms: " + chatrooms);
     console.log("show Chatrooms.data: " + chatrooms.data);
     console.log("show Chatrooms.length: " + chatrooms.length);
-    
     this.setState({
       chatrooms: chatrooms,
     });
@@ -131,33 +127,30 @@ logout= ()=>{
     console.log(this.state.currentUser,'printing current usere from state');
       return(
             <div className="chat-room">
-              <div className="chat-room-header">
-               <div className="profile_name"> 
+              <div className="chat-room-header_container"> 
                 <div className="left_header">
-                    <i onClick={() => this.openAndEdit(this.state.currentUser)}>
+                  <i onClick={() => this.openAndEdit(this.state.currentUser)}>
                     <Icon color="black" name='setting' size='larg' />
-                      </i> 
-                    <Profile 
+                  </i> 
+                  <Profile 
                     handleEditChange={this.handleEditChange}
                     open={this.state.showEditModal}
                     userToEdit={this.state.userToEdit}
                     closeAndEdit={this.closeAndEdit}
-                    />
-                    {this.state.currentUser.first_name}  {this.state.currentUser.last_name}
-                    </div>
-                    <div className="right_header">
-                    <i onClick={() => this.logout()}>
-                    <Icon color='red' name='power off' size='larg' />
-                      </i> 
-                    </div>
-              </div>
+                  />
+                  {this.state.currentUser.first_name}  {this.state.currentUser.last_name}
+                </div>
+                <div className="right_header">
+                            <i onClick={() => this.logout()}>
+                            <Icon color='red' name='power off' size='larg' />
+                            </i> 
+                </div>
               </div>
               <div className="chat-main-room">
                 <div className="chat-main-room-left">
                   <DropdownNewChat users={this.state.users} current_user={this.state.current_user}
                     showChatrooms={this.showChatrooms}/>
-                  {/* <ChatroomControl current_user={this.state.current_user} chatrooms={this.state.chatrooms}
-                    showChatrooms={this.showChatrooms}/> */}
+
                     <hr/>
                   <ChatRooms current_user={this.state.current_user} showConversation={this.showConversation}
                     showChatrooms={this.showChatrooms} chatrooms={this.state.chatrooms} 
@@ -165,9 +158,8 @@ logout= ()=>{
                     highlight_current_chatroom={this.state.highlight_current_chatroom}/>
                   </div>
                   <div className="chat-main-room-right">
-                    <div className="conversation">
-                    <Conversation chatroom={this.state.chatroom} currentUser={this.state.currentUser}
-                      handleHighlightChatroom={this.handleHighlightChatroom}/>
+                    <div className="conversation" >
+                    <Conversation chatroom={this.state.chatroom} currentUser={this.state.currentUser}/>
                     </div>
                     <div className="chat-main-room-footer">
                     <ChatBox current_user={this.state.current_user} chatroom={this.state.chatroom}/>
