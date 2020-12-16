@@ -69,8 +69,6 @@ render(){
           <CreateUser crateUser={this.crateUser}/>
         </div>
     </div>
-      
-      
 
    ) 
     }

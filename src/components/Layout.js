@@ -28,7 +28,6 @@ class Layout extends Component{
         id: '',
       },
       showEditModal: false,
-      highlight_chatroom: '',
     }
   }
 
@@ -37,15 +36,9 @@ class Layout extends Component{
   showConversation = (chatroom) => {
     console.log('the chatroom is working');
     console.log("show Conversation: " + chatroom);
-
-    let chatroom_to_highlight = this.state.highlight_chatroom;
-    if (chatroom == this.state.highlight_chatroom) {
-      chatroom_to_highlight = '';
-    }
   
     this.setState({
       chatroom: chatroom,
-      highlight_chatroom: chatroom_to_highlight,
     })
   }
 
@@ -81,15 +74,6 @@ handleEditChange = (e) => {
     },
   });
 };
-
-handleHighlightChatroom = (chatroom) => {
-  console.log("handleHighlightChatroom: " + chatroom);
-
-  this.setState({
-    highlight_chatroom: chatroom,
-  });
-};
-
 //Seding update request for user profile
 closeAndEdit = async (e) => {
   e.preventDefault();
@@ -120,42 +104,37 @@ logout= ()=>{
     console.log(this.state.currentUser,'printing current usere from state');
       return(
             <div className="chat-room">
-              <div className="chat-room-header">
-               <div className="profile_name"> 
+              <div className="chat-room-header_container"> 
                 <div className="left_header">
-                    <i onClick={() => this.openAndEdit(this.state.currentUser)}>
+                  <i onClick={() => this.openAndEdit(this.state.currentUser)}>
                     <Icon color="black" name='setting' size='larg' />
-                      </i> 
-                    <Profile 
+                  </i> 
+                  <Profile 
                     handleEditChange={this.handleEditChange}
                     open={this.state.showEditModal}
                     userToEdit={this.state.userToEdit}
                     closeAndEdit={this.closeAndEdit}
-                    />
-                    {this.state.currentUser.first_name}  {this.state.currentUser.last_name}
-                    </div>
-                    <div className="right_header">
-                    <i onClick={() => this.logout()}>
-                    <Icon color='red' name='power off' size='larg' />
-                      </i> 
-                    </div>
-              </div>
+                  />
+                  {this.state.currentUser.first_name}  {this.state.currentUser.last_name}
+                </div>
+                <div className="right_header">
+                            <i onClick={() => this.logout()}>
+                            <Icon color='red' name='power off' size='larg' />
+                            </i> 
+                </div>
               </div>
               <div className="chat-main-room">
                 <div className="chat-main-room-left">
                   <DropdownNewChat users={this.state.users} current_user={this.state.current_user}
                     showChatrooms={this.showChatrooms}/>
-                  {/* <ChatroomControl current_user={this.state.current_user} chatrooms={this.state.chatrooms}
-                    showChatrooms={this.showChatrooms}/> */}
+
                     <hr/>
                   <ChatRooms current_user={this.state.current_user} showConversation={this.showConversation}
-                    showChatrooms={this.showChatrooms} chatrooms={this.state.chatrooms} 
-                    highlight_chatroom={this.state.highlight_chatroom}/>
+                    showChatrooms={this.showChatrooms} chatrooms={this.state.chatrooms}/>
                   </div>
                   <div className="chat-main-room-right">
-                    <div className="conversation">
-                    <Conversation chatroom={this.state.chatroom} currentUser={this.state.currentUser}
-                      handleHighlightChatroom={this.handleHighlightChatroom}/>
+                    <div className="conversation" >
+                    <Conversation chatroom={this.state.chatroom} currentUser={this.state.currentUser}/>
                     </div>
                     <div className="chat-main-room-footer">
                     <ChatBox current_user={this.state.current_user} chatroom={this.state.chatroom}/>

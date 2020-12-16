@@ -31,11 +31,7 @@ header{
  padding-left:20px;
 }
 main{
- margin:0px auto;
- max-width: 1240px;
- flex-grow:1;
- border-left:2px solid #FFFFFF;
- border-right:2px solid #FFFFFF;
+ flex-grow:1; 
 }
 footer{
   background:#000000;
@@ -51,9 +47,12 @@ footer{
 
 /* main_page  start */
 .landing_page{
+  margin:0px auto;
+  max-width: 1240px; 
   display:flex;
   justify-content:space-around;
   align-items: left;
+  
 }
 .left_part{
   padding-top:5vh;
@@ -71,46 +70,45 @@ footer{
  }
 
 
- /* Chat Page */
+
+
+
+ /* Chat component */
  .chat-room{
   margin:0px auto;
-  max-width: 1240px;
+  max-width: 1240px; 
   display:flex;
   flex-direction:column;
+  align-items: left;
  }
-.chat-room-header{
+.chat-room-header_container{
+  display:flex;
   height:7vh;
-  width:1137px;
+  justify-content: space-between;
   background-color:#e4a825;
+  padding:2vh; 
+  font-size:4vh;
   color:#FFFFFF;
 }
-.profile_name{
-   padding:2vh; 
-   font-size:4vh;
-  display: flex;
-  flex-direction:row;
-  justify-content: space-between;
-}
 
+/* Chat room after header */
 .chat-main-room{
   display: flex;
-  flex-direction:row;
-
+  min-height: 73vh;
 }
 .chat-main-room-left{
 padding:1vh;
 background:#d2cece;
-min-height: 73vh;
 width:25%;
-
 }
 .chat-main-room-right{
 width:75%;
 min-height: 73vh;
 display: flex;
 flex-direction:column;
-
 }
+
+
 
 .conversation{
   width:100%;
@@ -134,36 +132,37 @@ textarea{
   resize: none;
   border:none;
   padding:1vh;
-  border-bottom:5px solid #dad8d8;
-  border-top:5px solid #dad8d8;
+  border-bottom:3px solid #dad8d8;
+  border-top:3px solid #dad8d8;
   outline: none;
 }
 .buttons button{
-background:rgb(230, 206, 206);
+background:#9ada51;
 border:none;
 height:94%;
 width:12vh;
-border-bottom:5px solid #dad8d8;
+border-bottom:3px solid #dad8d8;
 outline: none;
 }
-
 .char_room_list{
  display: flex; 
 }
-/* Message component */
 
-.message_layout_a{
+/* Message component */
+ .message_layout_a{
 border-radius:10px;
 background:#edebeb;
-font-size:14px;
-max-width:50%;
-
-background-color:#bdfaf6;
+font-size:16px;
+max-width:85%;
+line-height:22px;
+font-weight: normal;
+background-color:#daf9f7;
 }
 .user_a_massages{
   display: flex;
   justify-content: space-around;
   font-size:14px;
+  
 }
 .message_layout_header{
   display: flex;
@@ -176,20 +175,16 @@ background-color:#bdfaf6;
 .message_layout_b{
   border-radius:10px;
   background:#edebeb;
-  font-size:14px;
-  max-width:45%;
+  font-size:16px;
+  max-width:85%;
+  line-height:22px;
+  font-weight: normal;
   background-color:#e1dbdb;
   }
-
   .highlight{
     background-color: cyan;
     color: black;
-  }
-
-
-
-
-  
+  } 
   /* Mobile view*/
 @media screen and (max-width: 640px) {
   .header-container{
@@ -203,8 +198,6 @@ background-color:#bdfaf6;
     font-size:20px;
   }
   main{
-    margin:0 auto;
-    max-width: 1240px;
     flex-grow:1;
     border-left:2px solid #FFFFFF;
     border-right:2px solid #FFFFFF;
@@ -226,4 +219,33 @@ background-color:#bdfaf6;
     border:.5px solid #FFFFFF;
     padding:5px;
   }
+
+/* chat room */
+.chat-main-room{
+  display: flex;
+  min-height: 73vh;
+  flex-direction:column;
+}
+
+.chat-main-room-left{
+  width:100%;
+  padding:1vh;
+  background:#d2cece;
+  }
+  .chat-main-room-right{
+  width:100%;
+  min-height: 73vh;
+  display: flex;
+  flex-direction:column;
+  }
+  .buttons button{
+    height:8vh;
+    width:10vh;
+    }
+  textarea{
+      height: 52px;
+      border-left:3px solid #dad8d8;
+     
+    }
+    
 }
