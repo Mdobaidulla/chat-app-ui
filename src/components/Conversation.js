@@ -102,7 +102,7 @@ class Conversation extends Component{
         return(
         <>
          <div >    
-		    <h3  >{ allMessages}</h3 >
+		    <h3 >{ allMessages}</h3 >
          </div>
           <div style={{ float:"left", clear: "both" }}
           ref={(el) => { this.messagesEnd = el; }}>

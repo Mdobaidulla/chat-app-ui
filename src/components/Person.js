@@ -58,7 +58,7 @@ class Person extends Component{
                         <img src={ProfileDefaultImage} height="40" width="40" className="images" />
                         {this.props.first_name} {this.props.last_name }
                         <br></br>
-                        {this.props.email} {highlight_message}
+                        {this.props.email}
                         </div>
                 </div>
             </div>

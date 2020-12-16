@@ -7,6 +7,7 @@ class ChatRooms extends Component{
         contacts:[],
         chatrooms: [],
         length: 0,
+        highlight_chatroom: '',
        }
    
     componentDidMount(){
@@ -40,6 +41,14 @@ class ChatRooms extends Component{
 
             this.setState({
                 length: this.props.chatrooms.length,
+            });
+        }
+
+        if (this.state.highlight_chatroom != this.props.highlight_chatroom) {
+            this.getAllChatrooms();
+
+            this.setState({
+                highlight_chatroom: this.props.highlight_chatroom,
             });
         }
 
