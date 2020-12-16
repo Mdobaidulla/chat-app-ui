@@ -9,13 +9,14 @@ class Message extends Component{
         last_name: '',
         message: '',
         timestamp: '',
+        datestamp: '',
         currentUser:this.props.currentUser,
        }
    
     componentDidMount(){
         this.getName();
-        
     }
+
     getName= async () =>{
         try {
         const first_name = await axios(
@@ -123,12 +124,17 @@ class Message extends Component{
         let timestamp = `  ` + hours + ":" + minutes + ' ' + ampm;
         timestamp = timestamp + ' ' + day + ', ' + month + '. ' + date.getDate();
         console.log('timestamp is ', timestamp);
+
+        let datestamp = day + ', ' + month + '. ' + date.getDate();
+        let shortTimeStamp = hours + ":" + minutes + ' ' + ampm;
         
         this.setState({
             first_name: first_name.data,
             last_name: last_name.data,
             user: this.props.user,
             timestamp: timestamp,
+            datestamp: datestamp,
+            shortTimeStamp: shortTimeStamp,
         });
 
         } catch (err) {

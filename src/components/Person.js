@@ -30,9 +30,20 @@ class Person extends Component{
 
         let highlight_message = "";
         let classString = "char_room_list";
-        if (this.props.highlight_chatroom == this.props.chatroom_id) {
-            highlight_message = "XXXXX";
+        if ((this.props.highlight_chatroom == this.props.chatroom_id) && 
+        (this.props.highlight_current_chatroom != this.props.chatroom_id)) {
+            highlight_message = "pending";
             classString = "char_room_list highlight";
+        }
+        else if ((this.props.highlight_chatroom != this.props.chatroom_id) && 
+        (this.props.highlight_current_chatroom == this.props.chatroom_id)) {
+            highlight_message = "current";
+            classString = "char_room_list highlight_current";
+        }
+        else if ((this.props.highlight_chatroom == this.props.chatroom_id) && 
+        (this.props.highlight_current_chatroom == this.props.chatroom_id)) {
+            highlight_message = "current";
+            classString = "char_room_list highlight_current";
         }
         else {
             highlight_message = "";
