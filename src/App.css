@@ -100,7 +100,10 @@ footer{
 padding:1vh;
 background:#d2cece;
 width:25%;
+max-height:64.2vh;
+overflow-y: scroll;
 }
+
 .chat-main-room-right{
 width:75%;
 min-height: 73vh;

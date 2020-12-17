@@ -56,10 +56,12 @@ class ChatRooms extends Component{
         const allChatrooms = this.props.chatrooms.map((chatroom, index) => {
             console.log("chatroom is " + chatroom._id);
             return(
+                <div>
                 <ChatRoom key={index} chatroom={chatroom} current_user={this.props.current_user}
                 showConversation={this.props.showConversation} getAllChatrooms={this.getAllChatrooms}
                 highlight_chatroom={this.props.highlight_chatroom} 
                 highlight_current_chatroom={this.props.highlight_current_chatroom}/>
+                </div>
             )
         })
         return(
