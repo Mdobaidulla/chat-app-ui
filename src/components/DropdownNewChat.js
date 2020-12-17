@@ -46,11 +46,7 @@ class DropdownNewChat extends Component{
 
         await axios({
             method: 'post',
-<<<<<<< HEAD
-            url: `http://localhost:5000/chatrooms`,
-=======
             url: process.env.REACT_APP_API_URL+'/chatrooms',
->>>>>>> 4eb46259daa8badb0fce31437208b9320f4e5839
             data: {
                 users: [this.props.current_user, otherUser.data],
                 isActive: true,
