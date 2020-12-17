@@ -22,10 +22,8 @@ class ChatRoom extends Component{
             const allUsers =await axios(
                 `http://localhost:5000/chatrooms/getAllUsers/${this.props.chatroom._id}`
             );
-            // console.log('All User Values', allUsers.data);
 
             let chatroomId = this.props.chatroom._id;
-            // console.log('my chatroom is ' + chatroomId);
 
             let otherUserId = '';
             allUsers.data.forEach(user => {
@@ -33,13 +31,10 @@ class ChatRoom extends Component{
                     otherUserId = user;
                 }
             });
-            // console.log('otherUserId: ', otherUserId);
 
             const otherUserFirstName =await axios(
                 `http://localhost:5000/users/first_name/${otherUserId}`
             );
-
-            // console.log("otheruserfirstname " + otherUserFirstName.data);
 
             const otherUserLastName =await axios(
                 `http://localhost:5000/users/last_name/${otherUserId}`

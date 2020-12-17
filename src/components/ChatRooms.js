@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import ChatRoom from './ChatRoom';
-import socketIOClient from "socket.io-client";
 
 class ChatRooms extends Component{
     state={
@@ -37,19 +36,6 @@ class ChatRooms extends Component{
     render(){
         console.log("this.props.chatrooms.length is " + this.props.chatrooms.length);
         console.log("chatrooms: this.props.highlight_chatroom: ", this.props.highlight_chatroom);
-
-        // const socket = socketIOClient('http://localhost:5000');
-        //         socket.on('delete_chatroom', (text_msg) => {
-        //             console.log("chatrooms delete_chatroom: ", text_msg);
-                        
-        //             if (this.state.received_msg != text_msg) {
-        //                 this.getAllChatrooms();
-    
-        //                 this.setState({
-        //                     received_msg: text_msg,
-        //                 })
-        //             }
-        //         });
 
         if (this.state.length != this.props.chatrooms.length) {
             this.getAllChatrooms();

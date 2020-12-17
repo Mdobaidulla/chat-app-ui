@@ -106,7 +106,7 @@ closeAndEdit = async (e) => {
   e.preventDefault();
   try {
     const editResponse = await axios.put(
-      'http://localhost:5000/users/' +
+      `http://localhost:5000/users/` +
        this.state.current_user,
         this.state.userToEdit
     );

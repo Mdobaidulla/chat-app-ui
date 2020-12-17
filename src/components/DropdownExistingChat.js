@@ -87,19 +87,6 @@ class DropdownExistingChat extends Component{
                 isActive: true,
             }
         });
-
-        // const allChatrooms = await axios(
-        //     `http://localhost:5000/chatrooms/chatroomWithUserId/${this.props.current_user}`
-        // );
-        // console.log('All Chatroom Values', allChatrooms.data);
-
-        // this.setState({
-        //     chatrooms: allChatrooms.data,
-        //     textAreaValue: '',
-        //     selection: 'Emails of Users',
-        // });
-
-        // this.props.showChatrooms(allChatrooms.data);
     }
 
     render() {

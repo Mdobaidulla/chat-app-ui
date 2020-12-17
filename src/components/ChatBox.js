@@ -22,7 +22,7 @@ class ChatBox extends Component{
 
         let sendMessage = this.props.chatroom + "|" + this.state.textAreaValue
 
-        const socket = socketIOClient('http://localhost:5000');
+        const socket = socketIOClient(`http://localhost:5000`);
         socket.emit('text_message', sendMessage) // send out text message
 
         this.setState({
@@ -48,7 +48,7 @@ class ChatBox extends Component{
 
         await axios({
             method: 'post',
-            url: 'http://localhost:5000/chats',
+            url: `http://localhost:5000/chats`,
             data: {
                 chatroom: this.props.chatroom,
                 user: this.props.current_user,
@@ -71,16 +71,11 @@ class ChatBox extends Component{
 
     handleUserKeyPress = e => {
         if (e.key === "Enter" && !e.shiftKey) {
-          // e.preventDefault();
           this.handleSendClick();
         }
     };
 
     render(){
-        // const socket = socketIOClient('http://localhost:5000');
-        // socket.on('text_message', (text_msg) => {
-        //     console.log("text message", text_msg);
-        // });
         
         return(
          <>    

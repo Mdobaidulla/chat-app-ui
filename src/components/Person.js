@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import axios from 'axios'
 import ProfileDefaultImage from '../images/defaultImage.png'
 import { Icon } from 'semantic-ui-react';
-import socketIOClient from "socket.io-client";
 
 class Person extends Component{
     state={
@@ -22,9 +21,6 @@ class Person extends Component{
             method: 'delete',
             url: `http://localhost:5000/chatrooms/${this.props.chatroom_id}`
         });
-
-        // const socket = socketIOClient('http://localhost:5000');
-        // socket.emit('delete_chatroom', this.props.chatroom_id) // send out text message
 
         this.props.getAllChatrooms();
     }
