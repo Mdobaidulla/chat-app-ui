@@ -11,6 +11,7 @@ class Conversation extends Component{
         received_msg: '',
         socket: null,
         highlightchatroom: '',
+        highlight_current_chatroom: '',
        }
 
     componentDidMount(){
@@ -63,7 +64,8 @@ class Conversation extends Component{
 
  //       if (this.props.chatroom != null) {
             if ((this.state.chatroom != this.props.chatroom) || 
-                (this.state.highlightchatroom != this.props.highlightchatroom)) {
+                (this.state.highlightchatroom != this.props.highlightchatroom) ||
+                (this.state.highlight_current_chatroom != this.props.highlight_current_chatroom)) {
                 this.getConversation();
 
                 const socket = socketIOClient(process.env.REACT_APP_API_URL);
@@ -94,6 +96,8 @@ class Conversation extends Component{
 
                 this.setState({
                     chatroom: this.props.chatroom,
+                    highlightchatroom: this.props.highlightchatroom,
+                    highlight_current_chatroom: this.props.highlight_current_chatroom,
                     socket: socket,
                 });
             }
