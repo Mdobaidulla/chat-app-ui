@@ -35,7 +35,7 @@ class Conversation extends Component{
     getConversation= async () =>{
         try {
         const allConversations = await axios(
-            `http://localhost:5000/chats/chatroom/${this.props.chatroom}`
+            process.env.REACT_APP_API_URL+`/chats/chatroom/${this.props.chatroom}`
         );
         console.log('Conversation - All Chatroom Values', allConversations.data);
 
@@ -56,7 +56,7 @@ class Conversation extends Component{
             if (this.state.chatroom != this.props.chatroom) {
                 this.getConversation();
 
-                const socket = socketIOClient(`http://localhost:5000`);
+                const socket = socketIOClient(process.env.REACT_APP_API_URL);
                 socket.on('text_message', (text_msg) => {
                     console.log("conversation text message: ", text_msg);
 

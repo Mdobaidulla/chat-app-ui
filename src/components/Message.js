@@ -21,12 +21,12 @@ class Message extends Component{
     getName= async () =>{
         try {
         const first_name = await axios(
-            `http://localhost:5000/users/first_name/${this.props.user}`
+            process.env.REACT_APP_API_URL+`/users/first_name/${this.props.user}`
         );
         console.log('first_name', first_name.data);
 
         const last_name = await axios(
-            `http://localhost:5000/users/last_name/${this.props.user}`
+            process.env.REACT_APP_API_URL+`/users/last_name/${this.props.user}`
         );
         console.log('last_name', last_name.data);
 
@@ -152,7 +152,7 @@ class Message extends Component{
 
         const chat = await axios({
             method: 'delete',
-            url: `http://localhost:5000/chats/${this.props.id}`
+            url: process.env.REACT_APP_API_URL+`/chats/${this.props.id}`
         });
 
         this.props.getConversation();

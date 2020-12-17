@@ -22,7 +22,7 @@ class ChatBox extends Component{
 
         let sendMessage = this.props.chatroom + "|" + this.state.textAreaValue
 
-        const socket = socketIOClient(`http://localhost:5000`);
+        const socket = socketIOClient(process.env.REACT_APP_API_URL);
         socket.emit('text_message', sendMessage) // send out text message
 
         this.setState({
@@ -48,7 +48,7 @@ class ChatBox extends Component{
 
         await axios({
             method: 'post',
-            url: `http://localhost:5000/chats`,
+            url: process.env.REACT_APP_API_URL+`/chats`,
             data: {
                 chatroom: this.props.chatroom,
                 user: this.props.current_user,

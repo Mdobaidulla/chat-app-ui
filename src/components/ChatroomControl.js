@@ -20,11 +20,11 @@ class ChatroomControl extends Component{
     handleSendClick = async (event) => {
         console.log("Send Button clicked");
 
-        let otherUser = await axios(`http://localhost:5000/users/userIdByEmail/${this.state.textAreaValue}`);
+        let otherUser = await axios(process.env.REACT_APP_API_URL+`/users/userIdByEmail/${this.state.textAreaValue}`);
 
         await axios({
             method: 'post',
-            url: `http://localhost:5000/chatrooms`,
+            url: process.env.REACT_APP_API_URL+'/chatrooms',
             data: {
                 users: [this.props.current_user, otherUser.data],
                 isActive: true,
@@ -32,7 +32,7 @@ class ChatroomControl extends Component{
         });
 
         const allChatrooms = await axios(
-            `http://localhost:5000/chatrooms/chatroomWithUserId/${this.props.current_user}`
+            process.env.REACT_APP_API_URL+`/chatrooms/chatroomWithUserId/${this.props.current_user}`
         );
         console.log('All Chatroom Values', allChatrooms.data);
 

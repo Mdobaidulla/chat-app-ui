@@ -18,7 +18,7 @@ class ChatRooms extends Component{
     getAllChatrooms= async () =>{
         try {
         const allChatrooms =await axios(
-            `http://localhost:5000/chatrooms/chatroomWithUserId/${this.props.current_user}`
+            process.env.REACT_APP_API_URL+`/chatrooms/chatroomWithUserId/${this.props.current_user}`
         );
         console.log('All Chatroom Values', allChatrooms.data);
 
