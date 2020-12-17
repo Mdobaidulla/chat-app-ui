@@ -19,7 +19,7 @@ class ChatRoom extends Component{
     getOtherUser= async () =>{
         try {
             const allUsers =await axios(
-                `http://localhost:5000/chatrooms/getAllUsers/${this.props.chatroom._id}`
+                process.env.REACT_APP_API_URL+`/chatrooms/getAllUsers/${this.props.chatroom._id}`
             );
             // console.log('All User Values', allUsers.data);
 
@@ -35,17 +35,17 @@ class ChatRoom extends Component{
             // console.log('otherUserId: ', otherUserId);
 
             const otherUserFirstName =await axios(
-                `http://localhost:5000/users/first_name/${otherUserId}`
+                process.env.REACT_APP_API_URL+`/users/first_name/${otherUserId}`
             );
 
             // console.log("otheruserfirstname " + otherUserFirstName.data);
 
             const otherUserLastName =await axios(
-                `http://localhost:5000/users/last_name/${otherUserId}`
+                process.env.REACT_APP_API_URL+`/users/last_name/${otherUserId}`
             );
 
             const otherUserEmail =await axios(
-                `http://localhost:5000/users/email/${otherUserId}`
+                process.env.REACT_APP_API_URL+`/users/email/${otherUserId}`
             );
 
             this.setState({
