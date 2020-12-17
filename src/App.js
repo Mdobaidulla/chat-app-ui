@@ -30,7 +30,8 @@ setCurrentUser= (currentUser)=>{
    <main>
       {!this.state.currentUser
       ?
-      <Landing setCurrentUser={this.setCurrentUser} />
+      <Landing setCurrentUser={this.setCurrentUser} 
+      />
       :
       <Layout currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser} /> 
       }

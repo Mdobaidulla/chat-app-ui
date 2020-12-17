@@ -15,7 +15,10 @@ class Login extends Component {
       render(){
         return (
           <Segment style={{ width: '100%' }} className="login_panel">
-            <h2>Login</h2>
+            <div className="createUserMessage"> 
+             <h2>Login</h2>
+              <p className="errorMessage">{this.props.loginErrorMessage}</p>
+            </div>
             <Form onSubmit={(e) => {
                 this.props.login(e, this.state)
                 this.setState({ email:'',password:''})
