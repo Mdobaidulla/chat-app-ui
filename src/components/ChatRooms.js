@@ -8,6 +8,7 @@ class ChatRooms extends Component{
         chatrooms: [],
         length: 0,
         highlight_chatroom: '',
+        received_msg: '',
        }
    
     componentDidMount(){

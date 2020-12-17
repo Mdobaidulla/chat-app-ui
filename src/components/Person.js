@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios'
 import ProfileDefaultImage from '../images/defaultImage.png'
 import { Icon } from 'semantic-ui-react';
+
 class Person extends Component{
     state={
         chatroomId: '',

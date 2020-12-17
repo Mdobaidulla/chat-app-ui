@@ -5,6 +5,7 @@ import Conversation from './Conversation';
 import ChatBox from './ChatBox';
 import ChatroomControl from './ChatroomControl';
 import DropdownNewChat from './DropdownNewChat';
+import DropdownExistingChat from './DropdownExistingChat';
 import axios from 'axios';
 import { Icon } from 'semantic-ui-react';
 
@@ -38,14 +39,17 @@ class Layout extends Component{
   showConversation = (chatroom) => {
     console.log('the chatroom is working');
     console.log("show Conversation: " + chatroom);
+
     let chatroom_to_highlight = this.state.highlight_chatroom;
     if (chatroom == this.state.highlight_chatroom) {
       chatroom_to_highlight = '';
     }
+
     this.setState({
       chatroom: chatroom,
       highlight_chatroom: chatroom_to_highlight,
     });
+
     this.handleHighlightCurrentChatroom(chatroom);
   }
 
@@ -151,15 +155,21 @@ logout= ()=>{
                   <DropdownNewChat users={this.state.users} current_user={this.state.current_user}
                     showChatrooms={this.showChatrooms}/>
 
-                    <hr/>
+                  <hr/>
                   <ChatRooms current_user={this.state.current_user} showConversation={this.showConversation}
                     showChatrooms={this.showChatrooms} chatrooms={this.state.chatrooms} 
                     highlight_chatroom={this.state.highlight_chatroom}
                     highlight_current_chatroom={this.state.highlight_current_chatroom}/>
+                  <hr/>
+
+                  {/* <h3>Add Users to Existing Chat:</h3>
+                  <DropdownExistingChat users={this.state.users} current_user={this.state.current_user}
+                    showChatrooms={this.showChatrooms} chatroom={this.state.chatroom}/> */}
                   </div>
                   <div className="chat-main-room-right">
                     <div className="conversation" >
-                    <Conversation chatroom={this.state.chatroom} currentUser={this.state.currentUser}/>
+                    <Conversation chatroom={this.state.chatroom} currentUser={this.state.currentUser}
+                      handleHighlightChatroom={this.handleHighlightChatroom}/>
                     </div>
                     <div className="chat-main-room-footer">
                     <ChatBox current_user={this.state.current_user} chatroom={this.state.chatroom}/>

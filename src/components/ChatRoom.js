@@ -1,6 +1,7 @@
-import React, {Component} from 'react'
-import axios from 'axios'
-import Person from './Person'
+import React, {Component} from 'react';
+import axios from 'axios';
+import Person from './Person';
+
 
 class ChatRoom extends Component{
     state={
@@ -21,10 +22,8 @@ class ChatRoom extends Component{
             const allUsers =await axios(
                 process.env.REACT_APP_API_URL+`/chatrooms/getAllUsers/${this.props.chatroom._id}`
             );
-            // console.log('All User Values', allUsers.data);
 
             let chatroomId = this.props.chatroom._id;
-            // console.log('my chatroom is ' + chatroomId);
 
             let otherUserId = '';
             allUsers.data.forEach(user => {
@@ -32,13 +31,10 @@ class ChatRoom extends Component{
                     otherUserId = user;
                 }
             });
-            // console.log('otherUserId: ', otherUserId);
 
             const otherUserFirstName =await axios(
                 process.env.REACT_APP_API_URL+`/users/first_name/${otherUserId}`
             );
-
-            // console.log("otheruserfirstname " + otherUserFirstName.data);
 
             const otherUserLastName =await axios(
                 process.env.REACT_APP_API_URL+`/users/last_name/${otherUserId}`
@@ -68,6 +64,7 @@ class ChatRoom extends Component{
         if (this.props.chatroom._id != this.state.chatroomId) {
             this.getOtherUser();
         }
+
         return(
             <>
                 <Person first_name={this.state.otherUserFirstName} last_name={this.state.otherUserLastName}

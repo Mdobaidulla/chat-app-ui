@@ -71,16 +71,11 @@ class ChatBox extends Component{
 
     handleUserKeyPress = e => {
         if (e.key === "Enter" && !e.shiftKey) {
-          // e.preventDefault();
           this.handleSendClick();
         }
     };
 
     render(){
-        // const socket = socketIOClient('http://localhost:5000');
-        // socket.on('text_message', (text_msg) => {
-        //     console.log("text message", text_msg);
-        // });
         
         return(
          <>    
