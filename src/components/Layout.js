@@ -169,7 +169,8 @@ logout= ()=>{
                   <div className="chat-main-room-right">
                     <div className="conversation" >
                     <Conversation chatroom={this.state.chatroom} currentUser={this.state.currentUser}
-                      handleHighlightChatroom={this.handleHighlightChatroom}/>
+                      handleHighlightChatroom={this.handleHighlightChatroom}
+                      highlight_current_chatroom={this.state.highlight_current_chatroom}/>
                     </div>
                     <div className="chat-main-room-footer">
                     <ChatBox current_user={this.state.current_user} chatroom={this.state.chatroom}/>

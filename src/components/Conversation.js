@@ -10,6 +10,7 @@ class Conversation extends Component{
         chatroom: '',
         received_msg: '',
         socket: null,
+        highlightchatroom: '',
        }
 
     componentDidMount(){
@@ -52,8 +53,17 @@ class Conversation extends Component{
         console.log("conversation: this.props.chatroom is " + this.props.chatroom);
         console.log("conversation: this.state.chatroom is " + this.state.chatroom);
 
+        if (this.state.highlightchatroom != this.props.highlightchatroom) {
+            this.getConversation();
+
+            this.setState({
+                highlightchatroom: this.props.highlightchatroom,
+            })
+        }
+
  //       if (this.props.chatroom != null) {
-            if (this.state.chatroom != this.props.chatroom) {
+            if ((this.state.chatroom != this.props.chatroom) || 
+                (this.state.highlightchatroom != this.props.highlightchatroom)) {
                 this.getConversation();
 
                 const socket = socketIOClient(process.env.REACT_APP_API_URL);
