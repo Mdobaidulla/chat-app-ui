@@ -49,9 +49,10 @@ class Conversation extends Component{
     }
 
     render(){
-        console.log("conversation: chatroom is " + this.props.chatroom);
+        console.log("conversation: this.props.chatroom is " + this.props.chatroom);
+        console.log("conversation: this.state.chatroom is " + this.state.chatroom);
 
-        if (this.props.chatroom != null) {
+ //       if (this.props.chatroom != null) {
             if (this.state.chatroom != this.props.chatroom) {
                 this.getConversation();
 
@@ -85,8 +86,8 @@ class Conversation extends Component{
                     chatroom: this.props.chatroom,
                     socket: socket,
                 });
-            } 
-        }
+            }
+ //       }
 
         const allMessages = this.state.chats.map((chat, index)=>{
             return(

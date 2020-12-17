@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import { Icon } from 'semantic-ui-react';
 
 class Message extends Component{
     state={
@@ -112,6 +113,9 @@ class Message extends Component{
         if (hours > 12) {
             hours = hours % 12;
         }
+        else if (hours == 0) {
+            hours = 12;
+        }
 
         if (minutes < 10) {
             minutes = '0' + minutes;
@@ -185,7 +189,8 @@ class Message extends Component{
                                     </div>
                                     <div>
                                       {this.state.timestamp}
-                                    </div>  
+                                    </div>
+                                    <i onClick={this.deleteMessage}> <Icon name='trash alternate outline' size='small' /></i>
                                 </div>
                                 <div className="actual_message">
                                      {this.props.message}
@@ -202,7 +207,8 @@ class Message extends Component{
                                 </div>
                                 <div>
                                   {this.state.timestamp}
-                                </div>  
+                                </div>
+                                <i onClick={this.deleteMessage}> <Icon name='trash alternate outline' size='small' /></i>  
                             </div>
                             <div className="actual_message">
                                  {this.props.message}

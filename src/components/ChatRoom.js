@@ -1,6 +1,7 @@
-import React, {Component} from 'react'
-import axios from 'axios'
-import Person from './Person'
+import React, {Component} from 'react';
+import axios from 'axios';
+import Person from './Person';
+
 
 class ChatRoom extends Component{
     state={
@@ -68,6 +69,7 @@ class ChatRoom extends Component{
         if (this.props.chatroom._id != this.state.chatroomId) {
             this.getOtherUser();
         }
+
         return(
             <>
                 <Person first_name={this.state.otherUserFirstName} last_name={this.state.otherUserLastName}
