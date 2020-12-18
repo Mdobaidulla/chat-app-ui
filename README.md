@@ -105,7 +105,8 @@ API link: https://chat-app-john-md.herokuapp.com
 
 
 
-| React Components  	|          |
+## React Components
+
 | Components Name   | Descriptions                      	|
 |-----------------	|-----------------------------------	|
 | ChatBox         	| Managing chat text box            	|
