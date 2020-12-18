@@ -126,9 +126,9 @@ API link: https://chat-app-john-md.herokuapp.com
 
 ## Future Enhancements
 
-- [] As a user, I want to create a group chat room where multiple users will be able to chat in a chatroom
-- [] As a user, I want to have the session after login to the account
-- [] As a user, I want to share file, and image 
-- [] As a user, I want to have video call feature in the app
-- [] As a user, I want to purge old chat messages after specify inteval
-- [] As a user, I want to archive all of my existing conversations
+- [ ] As a user, I want to create a group chat room where multiple users will be able to chat in a chatroom
+- [ ] As a user, I want to have the session after login to the account
+- [ ] As a user, I want to share file, and image 
+- [ ] As a user, I want to have video call feature in the app
+- [ ] As a user, I want to purge old chat messages after specify inteval
+- [ ] As a user, I want to archive all of my existing conversations
